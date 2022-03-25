@@ -12,7 +12,7 @@ import ProductManager from './pages/ProductManager'
 import ProductEdit from './pages/ProductEdit'
 import ProductAdd from './pages/ProductAdd'
 import { ProductType } from './types/product'
-import { add, list } from './api/product'
+import { add, list, update } from './api/product'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -29,6 +29,18 @@ function App() {
   const onHandleAdd = async (product: any) => {
     const { data } = await add(product);
     setProducts([...products, data]);
+  }
+  //Edit product
+  const onHandleUpdate = async (product: ProductType) => {
+    try {
+      //api
+      const { data } = await update(product);
+      //reRender
+      //Tạo ra 1 vòng lặp, nếu item.id == id sản phẩm vừa cập nhật (data), thì cập nhật ngược lại giữ nguyên
+      setProducts(products.map(item => item.id === data.id ? product : item))
+    } catch (error) {
+
+    }
   }
 
   return (
@@ -55,7 +67,7 @@ function App() {
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
               <Route index element={<ProductManager />} />
-              <Route path=":id/edit" element={<ProductEdit />} />
+              <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
           </Route>
