@@ -5,6 +5,8 @@ import { NavLink, Route, Routes } from 'react-router-dom'
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
+import ProductDetail from './pages/ProductDetail'
+import AdminLayout from './pages/layouts/AdminLayout'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -24,7 +26,11 @@ function App() {
             <Route index element={<HomePage />} />
             <Route path="product">
               <Route index element={<ProductPage />} />
+              <Route path=":id" element={<ProductDetail />} />
             </Route>
+          </Route>
+          <Route path="admin" element={<AdminLayout />}>
+
           </Route>
         </Routes>
       </main>
