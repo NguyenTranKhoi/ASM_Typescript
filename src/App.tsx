@@ -12,7 +12,7 @@ import ProductManager from './pages/ProductManager'
 import ProductEdit from './pages/ProductEdit'
 import ProductAdd from './pages/ProductAdd'
 import { ProductType } from './types/product'
-import { add, list, update } from './api/product'
+import { add, list, remove, update } from './api/product'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -30,6 +30,7 @@ function App() {
     const { data } = await add(product);
     setProducts([...products, data]);
   }
+
   //Edit product
   const onHandleUpdate = async (product: ProductType) => {
     try {
@@ -41,6 +42,13 @@ function App() {
     } catch (error) {
 
     }
+  }
+
+  //Remove product
+  const onHandleRemove = async (id: number) => {
+    remove(id);
+    //reRender
+    setProducts(products.filter(item => item.id !== id));
   }
 
   return (
@@ -66,7 +74,7 @@ function App() {
             <Route index element={<Navigate to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">
-              <Route index element={<ProductManager />} />
+              <Route index element={<ProductManager products={products} onRemove={onHandleRemove} />} />
               <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
