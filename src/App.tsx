@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import logo from './logo.svg'
 import './App.css'
 import { Navigate, NavLink, Route, Routes } from 'react-router-dom'
@@ -11,9 +11,25 @@ import Dashboard from './pages/Dashboard'
 import ProductManager from './pages/ProductManager'
 import ProductEdit from './pages/ProductEdit'
 import ProductAdd from './pages/ProductAdd'
+import { ProductType } from './types/product'
+import { add, list } from './api/product'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [products, setProducts] = useState<ProductType[]>([])
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const { data } = await list();
+      setProducts(data);
+    }
+    getProducts();
+  }, []);
+
+  //Add product
+  const onHandleAdd = async (product: any) => {
+    const { data } = await add(product);
+    setProducts([...products, data]);
+  }
 
   return (
     <div className="App">
@@ -40,7 +56,7 @@ function App() {
             <Route path="product">
               <Route index element={<ProductManager />} />
               <Route path=":id/edit" element={<ProductEdit />} />
-              <Route path="add" element={<ProductAdd />} />
+              <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
           </Route>
         </Routes>
