@@ -4,6 +4,7 @@ import './App.css'
 import { NavLink, Route, Routes } from 'react-router-dom'
 import WebsiteLayout from './pages/layouts/WebsiteLayout'
 import HomePage from './pages/HomePage'
+import ProductPage from './pages/ProductPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -21,6 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<WebsiteLayout />}>
             <Route index element={<HomePage />} />
+            <Route path="product">
+              <Route index element={<ProductPage />} />
+            </Route>
           </Route>
         </Routes>
       </main>
