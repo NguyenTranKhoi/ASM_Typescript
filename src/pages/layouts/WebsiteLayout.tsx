@@ -13,7 +13,6 @@ const WebsiteLayout = (props: Props) => {
                 <BannerHome />
             </header>
             <main>
-                <Outlet />
             </main>
             <footer>
                 footer
