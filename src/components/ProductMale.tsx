@@ -2,7 +2,7 @@ import React from 'react'
 
 type Props = {}
 
-const NewsProduct = (props: Props) => {
+const ProductMale = (props: Props) => {
     return (
         <div>
             <div className="content pt-[50px]">
@@ -311,4 +311,4 @@ const NewsProduct = (props: Props) => {
     )
 }
 
-export default NewsProduct
+export default ProductMale
