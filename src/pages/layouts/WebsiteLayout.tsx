@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import BannerHome from '../../components/BannerHome'
 import FooterHome from '../../components/FooterHome'
 import HeaderHome from '../../components/HeaderHome'
+import ProductFemle from '../../components/ProductFemle'
 import ProductMale from '../../components/ProductMale'
 
 
@@ -16,7 +17,10 @@ const WebsiteLayout = (props: Props) => {
                 <BannerHome />
             </header>
             <main>
+                {/* Sản phẩm nam */}
                 <ProductMale />
+                {/* Sản phẩm nữ */}
+                <ProductFemle />
             </main>
             <footer>
                 <FooterHome />
