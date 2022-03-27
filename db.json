@@ -15,5 +15,11 @@
   ],
   "profile": {
     "name": "typicode"
-  }
+  },
+  "products": [
+    {
+      "name": "ahihi",
+      "price": 500
+    }
+  ]
 }

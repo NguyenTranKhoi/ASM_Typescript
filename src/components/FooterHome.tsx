@@ -7,7 +7,7 @@ const FooterHome = (props: Props) => {
         <div>
             <div className="footter bg-neutral-900 grid grid-cols-3 p-[70px] mt-[70px]">
                 <div className="footter-left">
-                    <h3 className="text-white pl-[40px]">ĐIỀU HƯỚNG</h3>
+                    <h3 className="text-2xl text-white pl-[40px]">ĐIỀU HƯỚNG</h3>
                 </div>
                 <div className="footter-center text-center">
                     <div className="footter-center-logo">
