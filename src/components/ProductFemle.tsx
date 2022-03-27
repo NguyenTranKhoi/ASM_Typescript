@@ -6,7 +6,7 @@ const ProductFemle = (props: Props) => {
     return (
         <div>
             <div className="content-new-heght pt-[50px]">
-                <h2 className="fonts text-center">ĐỒNG HỒ NỮ</h2>
+                <h2 className="text-center text-2xl">ĐỒNG HỒ NỮ</h2>
                 <div className="content-top grid grid-cols-4 pt-[50px]">
                     <div className="content-top-product border-dashed border-2 w-[310px] border-slate-400 text-center m-auto h-[370px] pt-[10px]">
                         <div className="hihi overflow-hidden">

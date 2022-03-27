@@ -4,6 +4,7 @@ import BannerHome from '../../components/BannerHome'
 import FooterHome from '../../components/FooterHome'
 import HeaderHome from '../../components/HeaderHome'
 import ProductFemle from '../../components/ProductFemle'
+import ProductInfo from '../../components/ProductInfo'
 import ProductMale from '../../components/ProductMale'
 
 
@@ -21,6 +22,8 @@ const WebsiteLayout = (props: Props) => {
                 <ProductMale />
                 {/* Sản phẩm nữ */}
                 <ProductFemle />
+                {/* Thông tin sản phẩm */}
+                <ProductInfo />
             </main>
             <footer>
                 <FooterHome />
