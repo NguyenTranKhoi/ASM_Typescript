@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import BannerHome from '../../components/BannerHome'
 import FooterHome from '../../components/FooterHome'
 import HeaderHome from '../../components/HeaderHome'
+import NewsProduct from '../../components/NewsProduct'
 
 type Props = {}
 
@@ -14,6 +15,7 @@ const WebsiteLayout = (props: Props) => {
                 <BannerHome />
             </header>
             <main>
+                <NewsProduct />
             </main>
             <footer>
                 <FooterHome />
