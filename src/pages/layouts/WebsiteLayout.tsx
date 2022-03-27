@@ -1,6 +1,7 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
 import BannerHome from '../../components/BannerHome'
+import FooterHome from '../../components/FooterHome'
 import HeaderHome from '../../components/HeaderHome'
 
 type Props = {}
@@ -15,7 +16,7 @@ const WebsiteLayout = (props: Props) => {
             <main>
             </main>
             <footer>
-                footer
+                <FooterHome />
             </footer>
         </div>
     )
