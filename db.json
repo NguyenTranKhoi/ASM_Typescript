@@ -18,8 +18,14 @@
   },
   "products": [
     {
+      "id": 1,
       "name": "ahihi",
       "price": 500
+    },
+    {
+      "name": "hí",
+      "price": "123",
+      "id": 2
     }
   ]
 }

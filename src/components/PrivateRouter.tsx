@@ -1,11 +1,17 @@
 import React from 'react'
+import { Navigate } from 'react-router-dom'
+import { isAuthenticate } from '../utils/localStorage'
 
-type Props = {}
+type PrivateRouterProps = {
+    children: JSX.Element
+}
 
-const PrivateRouter = (props: Props) => {
-    return (
-        <div>PrivateRouter</div>
-    )
+const PrivateRouter = (props: PrivateRouterProps) => {
+    const { user: { role } } = isAuthenticate();
+    if (!role) {
+        return <Navigate to="/signin" />
+    }
+    return props.children
 }
 
 export default PrivateRouter
