@@ -1,5 +1,6 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
+import AdminNav from "../components/admin/AdminNav";
 
 type Inputs = { //Kiểu dữ liệu của từng input
     name: string,
