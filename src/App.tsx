@@ -12,6 +12,8 @@ import ProductEdit from './pages/ProductEdit'
 import ProductAdd from './pages/ProductAdd'
 import { ProductType } from './types/product'
 import { add, list, remove, update } from './api/product'
+import Signup from './pages/Signup'
+import Signin from './pages/Signin'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -71,6 +73,8 @@ function App() {
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
             </Route>
           </Route>
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/signin" element={<Signin />} />
         </Routes>
       </main>
     </div>
