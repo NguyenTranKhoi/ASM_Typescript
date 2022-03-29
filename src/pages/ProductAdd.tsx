@@ -16,6 +16,7 @@ const ProductAdd = (props: ProductAddProps) => {
     //Dùng hook useNavigare để chuyển trang
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<Inputs> = (dataInput) => {
+        // console.log(1234)
         props.onAdd(dataInput);
         //Chuyển trang
         navigate("/admin/product");
