@@ -14,6 +14,7 @@ import { ProductType } from './types/product'
 import { add, list, remove, update } from './api/product'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
+import ProductMale from './components/ProductMale'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])

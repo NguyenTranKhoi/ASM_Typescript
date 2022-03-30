@@ -125,13 +125,12 @@ const ProductMale = ({ products }: PeoductMaleProps) => {
                                     </div>
                                     <p className="pt-[10px] text-sm text-slate-500">$</p>
                                     <h4 className="text-base"><a href="/chitietsanpham/${post.id}" className="no-underline text-stone-900 hover:text-amber-700" /></h4>
-                                    {'{'}/* <del>5,600,000đ</del> */{'}'}
+                                    <del>5,600,000đ</del>
                                     <div className="text">
                                         <del>1,863,000đ</del>
                                         <strong>$</strong>
                                     </div>
                                 </div>
-                                {'{'}/* content-top-product 8*/{'}'}
                             </div>
                         </div>
 
