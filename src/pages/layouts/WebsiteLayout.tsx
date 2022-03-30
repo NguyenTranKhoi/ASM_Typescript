@@ -19,7 +19,7 @@ const WebsiteLayout = (props: Props) => {
             </header>
             <main>
                 {/* Sản phẩm nam */}
-                <ProductMale />
+                <ProductMale products={[]} />
                 {/* Sản phẩm nữ */}
                 <ProductFemle />
                 {/* Thông tin sản phẩm */}

@@ -21,8 +21,8 @@ const AdminLayout = (props: Props) => {
 
     const handleAdd = async (product: any) => {
         const { data } = await add(product);
-        // setProducts([...products, data]);
-        console.log(data)
+        setProducts([...products, data]);
+        // console.log(data)
     }
     const handleList = (data: any) => {
         console.log(data)
