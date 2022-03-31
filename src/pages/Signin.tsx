@@ -29,9 +29,9 @@ const Signin = () => {
                 <div className="container py-4">
                     <div className="row g-0 align-items-center">
                         <div className="col-lg-6 mb-5 mb-lg-0">
-                            <div className="card cascading-right">
+                            <div className="card cascading-right border-gray-400">
                                 <div className="card-body p-5 shadow-5 text-center">
-                                    <h2 className="fw-bold mb-3 text-2xl">Signin up now</h2>
+                                    <h2 className="fw-bold mb-3 text-2xl">Signin in now</h2>
                                     <h2 className="fw-bold mb-5 text-base">Do not have an account ? <Link to={'/Signup'}><a href="">Signup</a></Link></h2>
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         {/* Email input */}
@@ -51,7 +51,7 @@ const Signin = () => {
                                         </div>
                                         {/* Submit button */}
                                         <button type="submit" className="btn btn-primary bg-sky-600 mb-4 w-[100%]">
-                                            Sign up
+                                            Sign in
                                         </button>
                                         {/* Register buttons */}
                                         <div className="text-center">
