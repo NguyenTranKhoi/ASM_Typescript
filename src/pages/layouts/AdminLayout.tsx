@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom'
 import { add, list } from '../../api/product'
 import AdminNav from '../../components/admin/AdminNav'
+import FooterAdmin from '../../components/admin/FooterAdmin'
 import { ProductType } from '../../types/product'
 import ProductAdd from '../ProductAdd'
 import ProductManager from '../ProductManager'
@@ -43,6 +44,7 @@ const AdminLayout = (props: Props) => {
                         <ProductManager onRemove={handleList} products={products} />
                     </div>
                 </main>
+                <FooterAdmin />
             </div>
         </div>
     )
