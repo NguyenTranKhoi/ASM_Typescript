@@ -5,12 +5,12 @@ type PeoductMaleProps = {
     products: ProductType[]
 }
 
-const ProductMale = ({ products }: PeoductMaleProps) => {
+const ProductMale = (prop: PeoductMaleProps) => {
     return (
         <div>
             <div className="content pt-[50px]">
                 <h2 className="text-2xl text-center">ĐỒNG HỒ NAM</h2>
-                {products?.map(() => {
+                {prop.products.map((item) => {
                     return (
                         <div>
                             <div className="content-top grid grid-cols-4 pt-[50px]">
@@ -20,11 +20,11 @@ const ProductMale = ({ products }: PeoductMaleProps) => {
                                             <img src="${post.img}" width="{200}" className="hover:scale-110 duration-700 m-auto" />
                                         </a>
                                     </div>
-                                    <p className="pt-[10px] text-sm text-slate-500" />
+                                    <p className="pt-[10px] text-sm text-slate-500" ></p>
                                     <h4 className="text-base"><a href="/chitietsanpham/${post.id}" className="no-underline text-stone-900 hover:text-amber-700" /></h4>
                                     <div className="text">
                                         <del>20,217,000đ</del>
-                                        <strong />
+                                        <strong></strong>
                                     </div>
                                 </div>
                                 {'{'}/* content-top-product 1*/{'}'}
@@ -136,6 +136,7 @@ const ProductMale = ({ products }: PeoductMaleProps) => {
 
                     )
                 })}
+
                 <div className="content-banner pt-[50px]">
                     <img src="./img/banner-dong-ho-nam-citizen_1534163540.jpg" className="w-[100%]" />
                 </div>

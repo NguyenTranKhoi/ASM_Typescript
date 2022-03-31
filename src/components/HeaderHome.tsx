@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
@@ -22,9 +23,12 @@ const HeaderHome = (props: Props) => {
                     </div>
                     <div className="icon pt-[5px] mr-[35px]">
                         <i className="fas fa-search text-slate-50 hover:text-orange-500 p-[10px]"></i>
-                        <a href="/dangnhap" className="no-underline text-slate-50 hover:text-orange-500 p-[10px]">
-                            Đăng nhập
-                        </a>
+                        <Link to={'/Signin'}>
+                            <a href="" className="no-underline text-slate-50 hover:text-orange-500 p-[10px]">
+                                Đăng nhập
+                            </a>
+                        </Link>
+
                         <i className="fas fa-cart-plus text-slate-50 hover:text-orange-500 p-[10px]"></i>
                     </div>
                 </div>

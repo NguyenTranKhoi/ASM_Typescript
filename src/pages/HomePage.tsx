@@ -5,8 +5,11 @@ import HeaderHome from '../components/HeaderHome'
 import ProductFemle from '../components/ProductFemle'
 import ProductInfo from '../components/ProductInfo'
 import ProductMale from '../components/ProductMale'
+import { ProductType } from '../types/product'
 
-type Props = {}
+type Props = {
+    product: ProductType[]
+}
 
 const HomePage = (props: Props) => {
     return (
