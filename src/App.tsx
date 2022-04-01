@@ -40,9 +40,8 @@ function App() {
       const { data } = await update(product);
       //reRender
       //Tạo ra 1 vòng lặp, nếu item.id == id sản phẩm vừa cập nhật (data), thì cập nhật ngược lại giữ nguyên
-      setProducts(products.map(item => item.id === data.id ? product : item))
+      setProducts(products.map(item => item._id === data._id ? product : item))
     } catch (error) {
-
     }
   }
 
@@ -52,7 +51,7 @@ function App() {
     const confirm = window.confirm("Bạn có muốn xoá khum");
     if (confirm) {
       remove(id);
-      setProducts(products.filter(item => item.id !== id));
+      setProducts(products.filter(item => item._id != id));
     }
   }
 
