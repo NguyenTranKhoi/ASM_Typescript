@@ -31,13 +31,21 @@ const ProductEdit = (props: ProductEditProps) => {
     }
 
     return (
-        <div>
-            <form action="" onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register('name', { required: true })} />
-                {errors.name && <span>Bắt buộc phải nhập!</span>}
-                <input type="number" {...register('price', { required: true })} />
-                {errors.price && <span>Bắt buộc phải nhập!</span>}
-                <button>Sửa</button>
+        <div className="w-[500px] mt-[50px] mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Add Products</label>
+                    <input type="text" className="form-control" {...register('name', { required: true })} placeholder="Tên sản phẩm" />
+                    {errors.name && <span>Bắt buộc phải nhập!</span>}
+                </div>
+                <br />
+                <div className="form-group">
+                    <label htmlFor="exampleInputPassword1">Price Product</label>
+                    <input type="text" className="form-control" {...register('price', { required: true })} placeholder="Giá sản phẩm" />
+                    {errors.price && <span>Bắt buộc phải nhập!</span>}
+                </div>
+                <br />
+                <button type="submit" className="btn btn-primary w-[100%] bg-indigo-500">Edit</button>
             </form>
         </div>
     )

@@ -24,12 +24,19 @@ const ProductAdd = (props: ProductAddProps) => {
         navigate("/admin/product");
     }
     return (
-        <div>
-            <form action="" onSubmit={handleSubmit(onSubmit)}>
-                <input type="text" {...register('img')} placeholder='Ảnh' />
-                <input type="text" {...register('name')} placeholder='Tên sản phẩm' />
-                <input type="number" {...register('price')} placeholder='Giá sản phẩm' />
-                <button>Thêm</button>
+        <div className="w-[500px] mt-[50px] mx-auto">
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="form-group">
+                    <label htmlFor="exampleInputEmail1">Add Products</label>
+                    <input type="text" className="form-control" {...register('name')} placeholder="Tên sản phẩm" />
+                </div>
+                <br />
+                <div className="form-group">
+                    <label htmlFor="exampleInputPassword1">Price Product</label>
+                    <input type="text" className="form-control" {...register('price')} placeholder="Giá sản phẩm" />
+                </div>
+                <br />
+                <button type="submit" className="btn btn-primary w-[100%] bg-indigo-500">Submit</button>
             </form>
         </div>
     )
