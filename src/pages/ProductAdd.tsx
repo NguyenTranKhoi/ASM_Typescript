@@ -1,9 +1,11 @@
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import AdminNav from "../components/admin/AdminNav";
+import FooterAdmin from "../components/admin/FooterAdmin";
 
 type Inputs = { //Kiểu dữ liệu của từng input
     name: string,
+    img: string,
     price: number,
 };
 
@@ -24,6 +26,7 @@ const ProductAdd = (props: ProductAddProps) => {
     return (
         <div>
             <form action="" onSubmit={handleSubmit(onSubmit)}>
+                <input type="text" {...register('img')} placeholder='Ảnh' />
                 <input type="text" {...register('name')} placeholder='Tên sản phẩm' />
                 <input type="number" {...register('price')} placeholder='Giá sản phẩm' />
                 <button>Thêm</button>

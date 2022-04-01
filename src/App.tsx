@@ -6,7 +6,7 @@ import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
 import ProductDetail from './pages/ProductDetail'
 import AdminLayout from './pages/layouts/AdminLayout'
-import Dashboard from './pages/Dashboard'
+import Dashboard from './pages/layouts/Dashboard'
 import ProductManager from './pages/ProductManager'
 import ProductEdit from './pages/ProductEdit'
 import ProductAdd from './pages/ProductAdd'
@@ -48,9 +48,12 @@ function App() {
 
   //Remove product
   const onHandleRemove = async (id: number) => {
-    remove(id);
     //reRender
-    setProducts(products.filter(item => item.id !== id));
+    const confirm = window.confirm("Bạn có muốn xoá khum");
+    if (confirm) {
+      remove(id);
+      setProducts(products.filter(item => item.id !== id));
+    }
   }
 
   return (
