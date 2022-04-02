@@ -31,23 +31,31 @@ const ProductEdit = (props: ProductEditProps) => {
     }
 
     return (
-        <div className="w-[500px] mt-[50px] mx-auto">
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Add Products</label>
-                    <input type="text" className="form-control" {...register('name', { required: true })} placeholder="Tên sản phẩm" />
-                    {errors.name && <span>Bắt buộc phải nhập!</span>}
+        <div>
+            <header className="bg-white shadow">
+                <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <h1 className="text-3xl font-bold text-gray-900">Edit Product</h1>
                 </div>
-                <br />
-                <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Price Product</label>
-                    <input type="text" className="form-control" {...register('price', { required: true })} placeholder="Giá sản phẩm" />
-                    {errors.price && <span>Bắt buộc phải nhập!</span>}
-                </div>
-                <br />
-                <button type="submit" className="btn btn-primary w-[100%] bg-indigo-500">Edit</button>
-            </form>
+            </header>
+            <div className="w-[500px] mt-[50px] mx-auto">
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Add Products</label>
+                        <input type="text" className="form-control" {...register('name', { required: true })} placeholder="Tên sản phẩm" />
+                        {errors.name && <span>Bắt buộc phải nhập!</span>}
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputPassword1">Price Product</label>
+                        <input type="text" className="form-control" {...register('price', { required: true })} placeholder="Giá sản phẩm" />
+                        {errors.price && <span>Bắt buộc phải nhập!</span>}
+                    </div>
+                    <br />
+                    <button type="submit" className="btn btn-primary w-[100%] bg-indigo-500">Edit</button>
+                </form>
+            </div>
         </div>
+
     )
 }
 

@@ -12,7 +12,7 @@ const ProductManager = (props: ProductManagerProps) => {
         <div>
             <header className="bg-white shadow">
                 <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    <h1 className="text-3xl font-bold text-gray-900">Thống kê</h1>
+                    <h1 className="text-3xl font-bold text-gray-900">List Product</h1>
                 </div>
             </header>
             {/* <table className="table table-bordered">
@@ -47,7 +47,7 @@ const ProductManager = (props: ProductManagerProps) => {
                             <td>{item.price}</td>
                             <td>
                                 <Link to={`/admin/product/${item._id}/edit`}>
-                                    <button type="button" className="btn btn-warning bg-yellow-400">Edit</button>
+                                    <button type="button" className="btn btn-warning bg-yellow-400 mr-[20px]">Edit</button>
                                 </Link>
                                 <button onClick={() => props.onRemove(item._id)} type="button" className="btn btn-danger bg-red-600">Remove</button>
                             </td>
