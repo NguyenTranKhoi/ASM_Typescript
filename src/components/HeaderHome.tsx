@@ -12,9 +12,9 @@ const HeaderHome = (props: Props) => {
                         <ul>
                             <li className="inline-block p-[10px] pt-[15px]"><a href="/introduct/page"
                                 className="no-underline text-slate-50 hover:text-orange-500">GIỚI THIỆU</a></li>
-                            <li className="inline-block p-[10px] pt-[15px]"><a href="/page/product"
+                            <li className="inline-block p-[10px] pt-[15px]"><a href="/product/page"
                                 className="no-underline text-slate-50 hover:text-orange-500">SẢN PHẨM</a></li>
-                            <li className="inline-block p-[10px] pt-[15px]"><a href="/page/contact"
+                            <li className="inline-block p-[10px] pt-[15px]"><a href="/contact/page"
                                 className="no-underline text-slate-50 hover:text-orange-500">LIÊN HỆ</a></li>
                         </ul>
                     </nav>

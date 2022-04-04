@@ -17,6 +17,7 @@ import Signin from './pages/Signin'
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
 import IntroducPage from './pages/IntroducPage'
+import ContactPage from './pages/ContactPage'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -66,7 +67,8 @@ function App() {
             <Route index element={<HomePage products={products} />} />
             <Route path="/products/:id" element={<ProductDetail />} />
             <Route path="/introduct/page" element={<IntroducPage />} />
-            <Route index element={<ProductPage />} />
+            <Route path="/contact/page" element={<ContactPage />} />
+            <Route path="/product/page" element={<ProductPage />} />
           </Route>
 
           <Route path="admin" element={<AdminLayout />}>
