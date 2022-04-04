@@ -10,7 +10,7 @@ const HeaderHome = (props: Props) => {
                 <div className="menu bg-neutral-900 flex justify-between fixed p-[5px] w-[100%] z-[3] h-[70px]">
                     <nav>
                         <ul>
-                            <li className="inline-block p-[10px] pt-[15px]"><a href="/gioithieu"
+                            <li className="inline-block p-[10px] pt-[15px]"><a href="/introduct/page"
                                 className="no-underline text-slate-50 hover:text-orange-500">GIỚI THIỆU</a></li>
                             <li className="inline-block p-[10px] pt-[15px]"><a href="/page/product"
                                 className="no-underline text-slate-50 hover:text-orange-500">SẢN PHẨM</a></li>
@@ -18,7 +18,7 @@ const HeaderHome = (props: Props) => {
                                 className="no-underline text-slate-50 hover:text-orange-500">LIÊN HỆ</a></li>
                         </ul>
                     </nav>
-                    <div className="logo pt-[10px]">
+                    <div className="logo pt-[10px] mr-[60px]">
                         <a href="/"><img src="../img/logo-mona-watches-white.png" width="130" /></a>
                     </div>
                     <div className="icon pt-[5px] mr-[35px]">
