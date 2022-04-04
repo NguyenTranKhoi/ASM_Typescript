@@ -6,6 +6,7 @@ import FooterAdmin from "../components/admin/FooterAdmin";
 type Inputs = { //Kiểu dữ liệu của từng input
     name: string,
     img: string,
+    nameextra: string,
     price: number,
 };
 
@@ -33,8 +34,13 @@ const ProductAdd = (props: ProductAddProps) => {
             <div className="w-[500px] mt-[50px] mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Add Products</label>
+                        <label htmlFor="exampleInputEmail1">Name Product</label>
                         <input type="text" className="form-control" {...register('name')} placeholder="Tên sản phẩm" />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Nameextra</label>
+                        <input type="text" className="form-control" {...register('nameextra')} placeholder="Tên sản phẩm" />
                     </div>
                     <br />
                     <div className="form-group">

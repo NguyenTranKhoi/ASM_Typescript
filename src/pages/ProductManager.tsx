@@ -21,6 +21,7 @@ const ProductManager = (props: ProductManagerProps) => {
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Name Extra</th>
                         <th scope="col">Price</th>
                     </tr>
                 </thead>
@@ -29,6 +30,7 @@ const ProductManager = (props: ProductManagerProps) => {
                         return <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             <td>{item.name}</td>
+                            <td>{item.nameextra}</td>
                             <td>{item.price}</td>
                             <td>
                                 <Link to={`/admin/product/${item._id}/edit`}>

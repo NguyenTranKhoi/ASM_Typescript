@@ -9,6 +9,7 @@ type ProductEditProps = {
 }
 type formInputs = {
     name: string,
+    nameextra: string,
     price: number
 }
 
@@ -42,6 +43,12 @@ const ProductEdit = (props: ProductEditProps) => {
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Add Products</label>
                         <input type="text" className="form-control" {...register('name', { required: true })} placeholder="Tên sản phẩm" />
+                        {errors.name && <span>Bắt buộc phải nhập!</span>}
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Nameextra</label>
+                        <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />
                         {errors.name && <span>Bắt buộc phải nhập!</span>}
                     </div>
                     <br />

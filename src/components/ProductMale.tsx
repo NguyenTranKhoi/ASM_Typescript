@@ -124,10 +124,6 @@ const ProductMale = (prop: PeoductMaleProps) => {
 
                     )
                 })}
-
-                <div className="content-banner pt-[50px]">
-                    <img src="./img/banner-dong-ho-nam-citizen_1534163540.jpg" className="w-[100%]" />
-                </div>
                 {/* content-banner*/}
             </div>
 

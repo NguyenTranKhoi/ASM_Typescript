@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { list } from '../api/product'
 import BannerHome from '../components/BannerHome'
+import BannerIcon from '../components/BannerIcon'
 import FooterHome from '../components/FooterHome'
 import HeaderHome from '../components/HeaderHome'
 import ProductFemle from '../components/ProductFemle'
@@ -48,7 +49,7 @@ const HomePage = (props: Props) => {
                         </div>
                     })}
                 </div>
-                {/* <ProductMale products={product} /> */}
+                <BannerIcon />
                 <ProductFemle />
                 <ProductInfo />
             </main>
