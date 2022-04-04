@@ -7,7 +7,7 @@ const HeaderHome = (props: Props) => {
     return (
         <div>
             <div className="header">
-                <div className="menu bg-neutral-900 flex justify-between fixed p-[5px] w-[100%] z-[3] h-[70px]">
+                <div className="menu bg-neutral-900 flex justify-between fixed p-[5px] w-[100%] z-20 h-[70px]">
                     <nav>
                         <ul>
                             <li className="inline-block p-[10px] pt-[15px]"><a href="/introduct/page"

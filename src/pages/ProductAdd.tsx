@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import toastr from 'toastr'
@@ -28,6 +29,25 @@ const ProductAdd = (props: ProductAddProps) => {
         } catch (error) {
             toastr.error("Lỗi khi thêm")
         }
+        console.log(dataInput.img[0])
+        const file = dataInput.img[0]
+        const formData = new FormData()
+
+        formData.append('file', file)
+        formData.append("upload_preset", "zmppimam")
+
+        axios({
+            url: "https://api.cloudinary.com/v1_1/dqd4urvf6/image/upload",
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-endcoded",
+            }, data: formData,
+        }).then((res) => {
+            dataInput.img = res.data.url
+            console.log(dataInput.img)
+            props.onAdd(dataInput)
+        })
+        console.log(dataInput)
     }
     return (
         <div>
@@ -38,6 +58,11 @@ const ProductAdd = (props: ProductAddProps) => {
             </header>
             <div className="w-[500px] mt-[50px] mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Image</label>
+                        <input type="file" className="form-control" {...register('img', { required: true })} placeholder="Tên sản phẩm" />
+                    </div>
+                    <br />
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Nameextra</label>
                         <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />

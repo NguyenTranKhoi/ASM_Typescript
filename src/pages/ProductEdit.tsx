@@ -5,11 +5,13 @@ import { read } from '../api/product'
 import { ProductType } from '../types/product'
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
+import axios from 'axios'
 
 type ProductEditProps = {
     onUpdate: (product: ProductType) => void
 }
 type formInputs = {
+    img: string,
     name: string,
     nameextra: string,
     pricedrop: number,
@@ -29,13 +31,32 @@ const ProductEdit = (props: ProductEditProps) => {
         getProduct();
     }, []);
 
-    const onSubmit: SubmitHandler<formInputs> = data => {
+    let imgUpdate = ""
+
+    const onSubmit: SubmitHandler<formInputs> = async data => {
         try {
             props.onUpdate(data)
             navigate("/admin/product");
             toastr.success("Sửa thành công")
         } catch (error) {
             toastr.error("Lỗi khi sửa")
+        }
+        if (data.img[0] != 'h') {
+            const file = data.img[0]
+            const formData = new FormData()
+
+            formData.append("file", file)
+            formData.append("upload_preset", "zmppimam")
+            const { data: newimg } = await axios({
+                url: "https://api.cloudinary.com/v1_1/dqd4urvf6/image/upload",
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-endcoded",
+                }, data: formData,
+            })
+            imgUpdate = newimg.url
+            data.img = imgUpdate
+            console.log(data.img)
         }
     }
 
@@ -48,6 +69,12 @@ const ProductEdit = (props: ProductEditProps) => {
             </header>
             <div className="w-[500px] mt-[50px] mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Image</label>
+                        <input type="file" className="form-control" {...register('img', { required: true })} placeholder="Tên sản phẩm" />
+                        {errors.name && <span>Bắt buộc phải nhập!</span>}
+                    </div>
+                    <br />
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Nameextra</label>
                         <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />
