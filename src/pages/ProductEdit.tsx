@@ -3,6 +3,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useNavigate, useParams } from 'react-router-dom'
 import { read } from '../api/product'
 import { ProductType } from '../types/product'
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 type ProductEditProps = {
     onUpdate: (product: ProductType) => void
@@ -28,8 +30,13 @@ const ProductEdit = (props: ProductEditProps) => {
     }, []);
 
     const onSubmit: SubmitHandler<formInputs> = data => {
-        props.onUpdate(data)
-        navigate("/admin/product");
+        try {
+            props.onUpdate(data)
+            navigate("/admin/product");
+            toastr.success("Sửa thành công")
+        } catch (error) {
+            toastr.error("Lỗi khi sửa")
+        }
     }
 
     return (

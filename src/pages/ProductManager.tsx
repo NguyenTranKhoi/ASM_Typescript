@@ -8,6 +8,11 @@ type ProductManagerProps = {
 }
 
 const ProductManager = (props: ProductManagerProps) => {
+    const formatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+    });
+
     return (
         <div>
             <header className="bg-white shadow">
@@ -32,8 +37,8 @@ const ProductManager = (props: ProductManagerProps) => {
                             <th scope="row">{index + 1}</th>
                             <td>{item.nameextra}</td>
                             <td>{item.name}</td>
-                            <td>{item.pricedrop}</td>
-                            <td>{item.price}</td>
+                            <td>{formatter.format(item.pricedrop)}</td>
+                            <td>{formatter.format(item.price)}</td>
                             <td>
                                 <Link to={`/admin/product/${item._id}/edit`}>
                                     <button type="button" className="btn btn-warning bg-yellow-400 mr-[20px]">Edit</button>

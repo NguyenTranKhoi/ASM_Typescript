@@ -14,7 +14,8 @@ import { ProductType } from './types/product'
 import { add, list, remove, update } from './api/product'
 import Signup from './pages/Signup'
 import Signin from './pages/Signin'
-import ProductMale from './components/ProductMale'
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -49,6 +50,7 @@ function App() {
   const onHandleRemove = async (id: number) => {
     //reRender
     const confirm = window.confirm("Bạn có muốn xoá khum");
+    toastr.success("Xoá thành công")
     if (confirm) {
       remove(id);
       setProducts(products.filter(item => item._id != id));
@@ -60,11 +62,9 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<WebsiteLayout />}>
-            <Route index element={<HomePage product={products} />} />
-            <Route path="product">
-              <Route index element={<ProductPage />} />
-              <Route path=":id" element={<ProductDetail />} />
-            </Route>
+            <Route index element={<HomePage products={products} />} />
+            <Route path="/products/:id" element={<ProductDetail />} />
+            <Route index element={<ProductPage />} />
           </Route>
 
           <Route path="admin" element={<AdminLayout />}>
