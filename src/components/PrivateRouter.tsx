@@ -5,11 +5,14 @@ import { isAuthenticate } from '../utils/localStorage'
 type PrivateRouterProps = {
     children: JSX.Element
 }
-
+const { user, token } = isAuthenticate();
 const PrivateRouter = (props: PrivateRouterProps) => {
-    const { user: { role } } = isAuthenticate();
-    if (!role) {
-        return <Navigate to="/signin" />
+    if (user) {
+        if (user.role != 0) {
+            return <Navigate to="/signin" />
+        } else {
+            return <Navigate to="/admin" />
+        }
     }
     return props.children
 }

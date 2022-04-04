@@ -22,7 +22,11 @@ const Signin = () => {
             console.log(user);
             toastr.success("Đăng nhập thành công")
             authenticated(user, () => {
-                navigate("/");
+                if (user.user.role) {
+                    navigate("/admin");
+                } else {
+                    navigate("/");
+                }
             })
         } catch (error) {
             toastr.error("Tài khoản hoặc mật khẩu không đúng")
