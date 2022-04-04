@@ -10,6 +10,7 @@ type ProductEditProps = {
 type formInputs = {
     name: string,
     nameextra: string,
+    pricedrop: number,
     price: number
 }
 
@@ -41,15 +42,21 @@ const ProductEdit = (props: ProductEditProps) => {
             <div className="w-[500px] mt-[50px] mx-auto">
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Nameextra</label>
+                        <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />
+                        {errors.name && <span>Bắt buộc phải nhập!</span>}
+                    </div>
+                    <br />
+                    <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Add Products</label>
                         <input type="text" className="form-control" {...register('name', { required: true })} placeholder="Tên sản phẩm" />
                         {errors.name && <span>Bắt buộc phải nhập!</span>}
                     </div>
                     <br />
                     <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Nameextra</label>
-                        <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />
-                        {errors.name && <span>Bắt buộc phải nhập!</span>}
+                        <label htmlFor="exampleInputPassword1">Price Drop</label>
+                        <input type="text" className="form-control" {...register('pricedrop', { required: true })} placeholder="Giá sản phẩm" />
+                        {errors.price && <span>Bắt buộc phải nhập!</span>}
                     </div>
                     <br />
                     <div className="form-group">
