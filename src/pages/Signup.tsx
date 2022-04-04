@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { signup } from '../api/user'
 import FooterHome from '../components/FooterHome'
 import HeaderHome from '../components/HeaderHome'
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 type TypeInputs = {
     name: string,
@@ -15,8 +17,13 @@ const Signup = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<TypeInputs>();
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<TypeInputs> = data => {
-        signup(data);
-        navigate("/signin");
+        try {
+            signup(data);
+            navigate("/signin");
+            toastr.success("Đăng ký thành công")
+        } catch (error) {
+            toastr.error("Tài khoản hoặc mật khẩu không đúng")
+        }
     }
     return (
         <div>
@@ -35,15 +42,15 @@ const Signup = () => {
                                     <form onSubmit={handleSubmit(onSubmit)}>
                                         {/* use input */}
                                         <div className="form-outline mb-4">
-                                            <input type="text" id="form3Example3" className="form-control" placeholder="User" {...register('name')} />
+                                            <input type="text" id="form3Example3" className="form-control" placeholder="User" {...register('name', { required: true })} />
                                         </div>
                                         {/* Email input */}
                                         <div className="form-outline mb-4">
-                                            <input type="email" id="form3Example3" className="form-control" placeholder="Email address" {...register('email')} />
+                                            <input type="email" id="form3Example3" className="form-control" placeholder="Email address" {...register('email', { required: true })} />
                                         </div>
                                         {/* Password input */}
                                         <div className="form-outline mb-4">
-                                            <input type="password" id="form3Example4" className="form-control" placeholder="Password" {...register('password')} />
+                                            <input type="password" id="form3Example4" className="form-control" placeholder="Password" {...register('password', { required: true })} />
                                         </div>
                                         {/* Checkbox */}
                                         <div className="form-check d-flex justify-content-center mb-4">

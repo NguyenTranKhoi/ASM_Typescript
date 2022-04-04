@@ -5,6 +5,8 @@ import { signin } from '../api/user'
 import FooterHome from '../components/FooterHome'
 import HeaderHome from '../components/HeaderHome'
 import { authenticated } from '../utils/localStorage'
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 type TypeInputs = {
     email: string,
@@ -15,11 +17,16 @@ const Signin = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<TypeInputs>();
     const navigate = useNavigate();
     const onSubmit: SubmitHandler<TypeInputs> = async data => {
-        const { data: user } = await signin(data);
-        console.log(user);
-        authenticated(user, () => {
-            navigate("/");
-        })
+        try {
+            const { data: user } = await signin(data);
+            console.log(user);
+            toastr.success("Đăng nhập thành công")
+            authenticated(user, () => {
+                navigate("/");
+            })
+        } catch (error) {
+            toastr.error("Tài khoản hoặc mật khẩu không đúng")
+        }
     }
     return (
         <div>
