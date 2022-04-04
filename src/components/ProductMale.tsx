@@ -14,19 +14,7 @@ const ProductMale = (prop: PeoductMaleProps) => {
                     return (
                         <div>
                             <div className="content-top grid grid-cols-4 pt-[50px]">
-                                <div className="content-top-product border-dashed border-2 w-[310px] border-slate-400 text-center m-auto h-[370px] pt-[10px]">
-                                    <div className="hihi overflow-hidden">
-                                        <a href="#">
-                                            <img src="${post.img}" width="{200}" className="hover:scale-110 duration-700 m-auto" />
-                                        </a>
-                                    </div>
-                                    <p className="pt-[10px] text-sm text-slate-500" ></p>
-                                    <h4 className="text-base"><a href="/chitietsanpham/${post.id}" className="no-underline text-stone-900 hover:text-amber-700" /></h4>
-                                    <div className="text">
-                                        <del>20,217,000đ</del>
-                                        <strong></strong>
-                                    </div>
-                                </div>
+
                                 {'{'}/* content-top-product 1*/{'}'}
                                 <div className="content-top-product border-dashed border-2 w-[310px] border-slate-400 text-center m-auto h-[370px] pt-[10px]">
                                     <div className="hihi overflow-hidden">

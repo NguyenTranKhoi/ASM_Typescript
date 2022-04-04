@@ -15,21 +15,6 @@ const ProductManager = (props: ProductManagerProps) => {
                     <h1 className="text-3xl font-bold text-gray-900">List Product</h1>
                 </div>
             </header>
-            {/* <table className="table table-bordered">
-                <tbody>
-                    {props.products.map((item, index) => {
-                        return <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{item.name}</td>
-                            <td>{item.price}</td>
-                            <td>
-                                <Link to={`/admin/product/${item._id}/edit`}>Edit</Link>
-                                <button onClick={() => props.onRemove(item._id)}>Remove</button>
-                            </td>
-                        </tr>
-                    })}
-                </tbody>
-            </table> */}
 
             <table className="table mt-[30px]">
                 <thead>
