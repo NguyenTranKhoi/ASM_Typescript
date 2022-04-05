@@ -3,6 +3,7 @@ import React from 'react'
 type Props = {}
 
 const ProductPage = (props: Props) => {
+    console.log(1234)
     return (
         <div className="bg-white">
             <div>
@@ -24,7 +25,7 @@ const ProductPage = (props: Props) => {
                             <h3 className="sr-only">Categories</h3>
                             <ul role="list" className="font-medium text-gray-900 px-2 py-3">
                                 <li>
-                                    <a href="#" className="block px-2 py-3"> Totes </a>
+                                    <a href="#" className="block px-2 py-3"> hi </a>
                                 </li>
                                 <li>
                                     <a href="#" className="block px-2 py-3"> Backpacks </a>
@@ -175,7 +176,7 @@ const ProductPage = (props: Props) => {
                 </div>
                 <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-                        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">New Arrivals</h1>
+                        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">Products</h1>
                         <div className="flex items-center">
                             <div className="relative inline-block text-left">
                                 <div>
@@ -219,9 +220,9 @@ const ProductPage = (props: Props) => {
                             {/* Filters */}
                             <form className="hidden lg:block">
                                 <h3 className="sr-only">Categories</h3>
-                                <ul role="list" className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200">
+                                <ul role="list" className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200 mr-[189px]">
                                     <li>
-                                        <a href="#"> Totes </a>
+                                        <a href="#"> Tots</a>
                                     </li>
                                     <li>
                                         <a href="#"> Backpacks </a>
