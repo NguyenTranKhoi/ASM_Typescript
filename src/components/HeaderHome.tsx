@@ -1,9 +1,15 @@
+import { Logout } from 'heroicons-react'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 type Props = {}
 
 const HeaderHome = (props: Props) => {
+    const navigate = useNavigate()
+    const logout = () => {
+        localStorage.removeItem("user")
+        navigate("/")
+    }
     return (
         <div>
             <div className="header">
@@ -18,18 +24,37 @@ const HeaderHome = (props: Props) => {
                                 className="no-underline text-slate-50 hover:text-orange-500">LIÊN HỆ</a></li>
                         </ul>
                     </nav>
-                    <div className="logo pt-[10px] mr-[60px]">
+                    <div className="logo pt-[10px] mr-[125px]">
                         <a href="/"><img src="../img/logo-mona-watches-white.png" width="130" /></a>
                     </div>
                     <div className="icon pt-[5px] mr-[35px]">
-                        <i className="fas fa-search text-slate-50 hover:text-orange-500 p-[10px]"></i>
-                        <Link to={'/Signin'}>
-                            <a href="" className="no-underline text-slate-50 hover:text-orange-500 p-[10px]">
-                                Đăng nhập
-                            </a>
-                        </Link>
+                        <div className="box h-[40px] absolute top-[26%] right-[13%] translate-[-50%,-50%] bg-teal-100">
+                            <form className="sbox" action="/search" method="get">
+                                <input className="stext" type="text" name="q" placeholder="Tìm kiếm bài viết..." />
+                                <a className="sbutton" type="submit" href="javascript:void(0);">
+                                    <i className="fa fa-search" />
+                                </a>
+                            </form>
+                        </div>
+                        <div className="flex">
+                            {localStorage.getItem("user") ?
+                                <Link to={'/Signin'}>
+                                    <div className="user flex items-center">
+                                        <a href="" className="no-underline text-slate-50 hover:text-orange-500 p-[10px]">
+                                            <i className="fas fa-user"></i>
+                                        </a>
+                                        <div onClick={() => logout()} className="text-white">Logout</div>
+                                    </div>
+                                </Link> :
+                                <Link to={'/Signin'}>
+                                    <a href="" className="no-underline text-slate-50 hover:text-orange-500 p-[10px]">
+                                        Signin
+                                    </a>
+                                </Link>
+                            }
+                            <i className="fas fa-cart-plus text-slate-50 hover:text-orange-500 p-[10px] pt-[12px]"></i>
+                        </div>
 
-                        <i className="fas fa-cart-plus text-slate-50 hover:text-orange-500 p-[10px]"></i>
                     </div>
                 </div>
             </div>

@@ -176,28 +176,38 @@ const ProductPage = (props: Props) => {
                 </div>
                 <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="relative z-10 flex items-baseline justify-between pt-24 pb-6 border-b border-gray-200">
-                        <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">Products</h1>
-                        <div className="flex items-center">
-                            <div className="relative inline-block text-left">
-                                <div>
-                                    <button type="button" className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900" id="menu-button" aria-expanded="false" aria-haspopup="true">
-                                        Sort
-                                        {/* Heroicon name: solid/chevron-down */}
-                                        <svg className="flex-shrink-0 -mr-1 ml-1 h-5 w-5 text-gray-400 group-hover:text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                        {/* <h1 className="text-4xl font-extrabold tracking-tight text-gray-900">Products</h1> */}
+                        <nav aria-label="Breadcrumb">
+                            <ol role="list" className="max-w-2xl mx-auto px-4 flex items-center space-x-2 sm:px-6 lg:max-w-7xl lg:px-8">
+                                <li>
+                                    <div className="flex items-center">
+                                        <a href="/" className="mr-2 text-lg font-medium text-gray-900 font-semibold text-xl"> Trang chủ </a>
+                                        <svg width={16} height={20} viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="w-4 h-5 text-gray-300">
+                                            <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                                         </svg>
-                                    </button>
-                                </div>
-                                <div className="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabIndex={-1}>
-                                    <div className="py-1" role="none">
-                                        <a href="#" className="font-medium text-gray-900 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-0"> Most Popular </a>
-                                        <a href="#" className="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-1"> Best Rating </a>
-                                        <a href="#" className="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-2"> Newest </a>
-                                        <a href="#" className="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-3"> Price: Low to High </a>
-                                        <a href="#" className="text-gray-500 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-4"> Price: High to Low </a>
                                     </div>
-                                </div>
-                            </div>
+                                </li>
+                                <li>
+                                    <div className="flex items-center">
+                                        <a href="/product/page" className="mr-2 text-lg font-medium text-gray-900 font-semibold text-xl"> Phụ kiện </a>
+                                        <svg width={16} height={20} viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="w-4 h-5 text-gray-300">
+                                            <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
+                                        </svg>
+                                    </div>
+                                </li>
+                            </ol>
+                        </nav>
+                        <div className="flex items-center">
+                            <form className="item-select border-2 p-1 border-slate-300 rounded-[15px]">
+                                <select name="" id="">
+                                    <option className="text-base" value={1}>Thứ tự mặc định</option>
+                                    <option className="text-base" value={2}>Thứ tự theo mức độ phổ biến</option>
+                                    <option className="text-base" value={3}>Thứ tự theo điểm đánh giá</option>
+                                    <option className="text-base" value={4}>Thứ tự theo sản phẩm mới</option>
+                                    <option className="text-base" value={5}>Thứ tự theo giá: thấp đến cao</option>
+                                    <option className="text-base" value={6}>Thứ tự theo giá: cao xuống thấp</option>
+                                </select>
+                            </form>
                             <button type="button" className="p-2 -m-2 ml-5 sm:ml-7 text-gray-400 hover:text-gray-500">
                                 <span className="sr-only">View grid</span>
                                 {/* Heroicon name: solid/view-grid */}
@@ -219,29 +229,31 @@ const ProductPage = (props: Props) => {
                         <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
                             {/* Filters */}
                             <form className="hidden lg:block">
-                                <h3 className="sr-only">Categories</h3>
-                                <ul role="list" className="text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-200 mr-[189px]">
+                                <li className="text-xl font-semibold list-none float-left">
+                                    Thương hiệu
+                                </li>
+                                <ul role="list" className="mt-[50px] text-sm font-medium text-gray-900 space-y-4 pb-6 border-b border-gray-400 mr-[180px]">
                                     <li>
-                                        <a href="#"> Tots</a>
+                                        <a href="#">Casio</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Backpacks </a>
+                                        <a href="#">Citizen</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Travel Bags </a>
+                                        <a href="#">G-Shock Baby-G</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Hip Bags </a>
+                                        <a href="#">Louis Erard</a>
                                     </li>
                                     <li>
-                                        <a href="#"> Laptop Sleeves </a>
+                                        <a href="#">Orient</a>
                                     </li>
                                 </ul>
                                 <div className="border-b border-gray-200 py-6">
                                     <h3 className="-my-3 flow-root">
                                         {/* Expand/collapse section button */}
                                         <button type="button" className="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-0" aria-expanded="false">
-                                            <span className="font-medium text-gray-900"> Color </span>
+                                            <span className="font-medium text-gray-900 text-lg font-semibold"> Màu sắc </span>
                                             <span className="ml-6 flex items-center">
                                                 <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
@@ -257,11 +269,11 @@ const ProductPage = (props: Props) => {
                                         <div className="space-y-4">
                                             <div className="flex items-center">
                                                 <input id="filter-color-0" name="color[]" defaultValue="white" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-color-0" className="ml-3 text-sm text-gray-600"> White </label>
+                                                <label htmlFor="filter-color-0" className="ml-3 text-sm text-gray-600"> Black </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-color-1" name="color[]" defaultValue="beige" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-color-1" className="ml-3 text-sm text-gray-600"> Beige </label>
+                                                <label htmlFor="filter-color-1" className="ml-3 text-sm text-gray-600"> White </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-color-2" name="color[]" defaultValue="blue" type="checkbox" defaultChecked className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
@@ -269,15 +281,15 @@ const ProductPage = (props: Props) => {
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-color-3" name="color[]" defaultValue="brown" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-color-3" className="ml-3 text-sm text-gray-600"> Brown </label>
+                                                <label htmlFor="filter-color-3" className="ml-3 text-sm text-gray-600"> Gold </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-color-4" name="color[]" defaultValue="green" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-color-4" className="ml-3 text-sm text-gray-600"> Green </label>
+                                                <label htmlFor="filter-color-4" className="ml-3 text-sm text-gray-600"> Plink </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-color-5" name="color[]" defaultValue="purple" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-color-5" className="ml-3 text-sm text-gray-600"> Purple </label>
+                                                <label htmlFor="filter-color-5" className="ml-3 text-sm text-gray-600"> Brown </label>
                                             </div>
                                         </div>
                                     </div>
@@ -286,7 +298,7 @@ const ProductPage = (props: Props) => {
                                     <h3 className="-my-3 flow-root">
                                         {/* Expand/collapse section button */}
                                         <button type="button" className="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-1" aria-expanded="false">
-                                            <span className="font-medium text-gray-900"> Category </span>
+                                            <span className="font-medium text-gray-900 text-lg font-semibold"> Danh mục </span>
                                             <span className="ml-6 flex items-center">
                                                 <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />
@@ -302,23 +314,19 @@ const ProductPage = (props: Props) => {
                                         <div className="space-y-4">
                                             <div className="flex items-center">
                                                 <input id="filter-category-0" name="category[]" defaultValue="new-arrivals" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-0" className="ml-3 text-sm text-gray-600"> New Arrivals </label>
+                                                <label htmlFor="filter-category-0" className="ml-3 text-sm text-gray-600"> Đồng hồ nam </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-category-1" name="category[]" defaultValue="sale" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-1" className="ml-3 text-sm text-gray-600"> Sale </label>
+                                                <label htmlFor="filter-category-1" className="ml-3 text-sm text-gray-600"> Đồng hồ nữ </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-category-2" name="category[]" defaultValue="travel" type="checkbox" defaultChecked className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-2" className="ml-3 text-sm text-gray-600"> Travel </label>
+                                                <label htmlFor="filter-category-2" className="ml-3 text-sm text-gray-600"> Đồng hồ đôi </label>
                                             </div>
                                             <div className="flex items-center">
                                                 <input id="filter-category-3" name="category[]" defaultValue="organization" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-3" className="ml-3 text-sm text-gray-600"> Organization </label>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <input id="filter-category-4" name="category[]" defaultValue="accessories" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-4" className="ml-3 text-sm text-gray-600"> Accessories </label>
+                                                <label htmlFor="filter-category-3" className="ml-3 text-sm text-gray-600"> Phụ kiện đồng hồ </label>
                                             </div>
                                         </div>
                                     </div>
@@ -327,7 +335,7 @@ const ProductPage = (props: Props) => {
                                     <h3 className="-my-3 flow-root">
                                         {/* Expand/collapse section button */}
                                         <button type="button" className="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500" aria-controls="filter-section-2" aria-expanded="false">
-                                            <span className="font-medium text-gray-900"> Size </span>
+                                            <span className="font-medium text-gray-900 text-lg font-semibold"> Kích cỡ </span>
                                             <span className="ml-6 flex items-center">
                                                 <svg className="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                     <path fillRule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clipRule="evenodd" />

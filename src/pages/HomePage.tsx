@@ -32,9 +32,11 @@ const HomePage = (props: Props) => {
                     {products.map((item, index) => {
                         return <div className="w-full content-top-product border-dashed border-2 border-slate-300 text-center m-auto h-[370px] pt-[10px] rounded-[10px]" key={index}>
                             <div className="hihi overflow-hidden">
-                                <a href="#">
-                                    <img src={`${item.img}`} width="200" className="hover:scale-110 duration-700 m-auto" />
-                                </a>
+                                <Link to={`/products/${item._id}`}>
+                                    <a href="#">
+                                        <img src={`${item.img}`} width="200" className="hover:scale-110 duration-700 m-auto" />
+                                    </a>
+                                </Link>
                             </div>
                             <p className="pt-[10px] text-sm text-slate-500" >{item.nameextra}</p>
                             <Link to={`/products/${item._id}`}>

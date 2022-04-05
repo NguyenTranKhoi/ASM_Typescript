@@ -18,6 +18,7 @@ import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
 import IntroducPage from './pages/IntroducPage'
 import ContactPage from './pages/ContactPage'
+import PrivateRouter from './components/PrivateRouter'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -71,7 +72,7 @@ function App() {
             <Route path="/product/page" element={<ProductPage />} />
           </Route>
 
-          <Route path="admin" element={<AdminLayout />}>
+          <Route path="admin" element={<PrivateRouter><AdminLayout /></ PrivateRouter>}>
             <Route index element={<Navigate to="dashboard" />} />
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="product">

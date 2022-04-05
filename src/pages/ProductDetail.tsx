@@ -36,7 +36,7 @@ const ProductDetail = (props: Props) => {
                             </li>
                             <li>
                                 <div className="flex items-center">
-                                    <a href="#" className="mr-2 text-lg font-medium text-gray-900"> Sản phẩm </a>
+                                    <a href="/product/page" className="mr-2 text-lg font-medium text-gray-900"> Sản phẩm </a>
                                     <svg width={16} height={20} viewBox="0 0 16 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" className="w-4 h-5 text-gray-300">
                                         <path d="M5.697 4.34L8.98 16.532h1.327L7.025 4.341H5.697z" />
                                     </svg>
@@ -55,18 +55,18 @@ const ProductDetail = (props: Props) => {
                             <br />
                             <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8 mt-[50px]">
                                 <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-secondary-product-shot.jpg" alt="Two each of gray, white, and black shirts laying flat." className="w-full h-full object-center object-cover" />
+                                    <img src={`${product?.img}`} alt="Two each of gray, white, and black shirts laying flat." className="w-full h-full object-center object-cover" />
                                 </div>
                                 <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
                                     <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                                        <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-01.jpg" alt="Model wearing plain black basic tee." className="w-full h-full object-center object-cover" />
+                                        <img src={`${product?.img}`} alt="Model wearing plain black basic tee." className="w-full h-full object-center object-cover" />
                                     </div>
                                     <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                                        <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-tertiary-product-shot-02.jpg" alt="Model wearing plain gray basic tee." className="w-full h-full object-center object-cover" />
+                                        <img src={`${product?.img}`} alt="Model wearing plain gray basic tee." className="w-full h-full object-center object-cover" />
                                     </div>
                                 </div>
                                 <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-                                    <img src="https://tailwindui.com/img/ecommerce-images/product-page-02-featured-product-shot.jpg" alt="Model wearing plain white basic tee." className="w-full h-full object-center object-cover" />
+                                    <img src={`${product?.img}`} alt="Model wearing plain white basic tee." className="w-full h-full object-center object-cover" />
                                 </div>
                             </div>
                         </div>
