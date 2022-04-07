@@ -29,7 +29,7 @@ const CategoryManager = (props: CategoryManagerProps) => {
                             <th scope="row">{index + 1}</th>
                             <td>{item.name}</td>
                             <td>
-                                <Link to={`/admin/product/${item._id}/edit`}>
+                                <Link to={`/admin/category/${item._id}/edit`}>
                                     <button type="button" className="btn btn-warning bg-yellow-400 mr-[20px]">Edit</button>
                                 </Link>
                                 <button onClick={() => props.onRemoveCt(item._id)} type="button" className="btn btn-danger bg-red-600">Remove</button>

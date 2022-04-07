@@ -23,6 +23,7 @@ import AddCategory from './pages/AddCategory'
 import CategoryManager from './pages/CategoryManager'
 import { TypeCategory } from './types/category'
 import { addct, listct, updatect, removect } from './api/category'
+import EditCategory from './pages/EditCategory'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -83,6 +84,7 @@ function App() {
   //Edit category
   const UpdateCategory = async (editcategory: TypeCategory) => {
     const { data } = await updatect(editcategory)
+    toastr.success("Sửa thành công")
     setCategory(categorys.map(item => item._id == data._id ? data : item))
   }
 
@@ -119,6 +121,7 @@ function App() {
             <Route path="category">
               <Route index element={<CategoryManager categorys={categorys} onRemoveCt={RemoveCategory} />} />
               <Route path="add" element={<AddCategory onAddCategory={AddCategorys} />} />
+              <Route path=":id/edit" element={<EditCategory onUpdateCategory={UpdateCategory} />} />
             </Route>
           </Route>
           <Route path="/signup" element={<Signup />} />
