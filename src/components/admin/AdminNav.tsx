@@ -21,7 +21,7 @@ const AdminNav = (props: Props) => {
                                     <Link to={'/admin/product'} >
                                         <a href="#" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">List Product</a>
                                     </Link>
-                                    <Link to={''} >
+                                    <Link to={'/admin/category'} >
                                         <a href="#" className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium" aria-current="page">List Category</a>
                                     </Link>
                                     <Link to={'/admin/product/add'}>

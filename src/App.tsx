@@ -76,6 +76,7 @@ function App() {
   //Add categorys
   const AddCategorys = async (category: any) => {
     const { data } = await addct(category)
+    toastr.success("Thêm thành công")
     setCategory([...categorys, data])
   }
 
@@ -88,6 +89,7 @@ function App() {
   //Remove category
   const RemoveCategory = async (_id: number) => {
     const confirm = window.confirm("Bạn có muốn xoá danh mục không?")
+    toastr.success("Xoá thành công")
     if (confirm) {
       removect(_id)
       setCategory(categorys.filter(item => item._id != _id))
@@ -116,7 +118,7 @@ function App() {
             </Route>
             <Route path="category">
               <Route index element={<CategoryManager categorys={categorys} onRemoveCt={RemoveCategory} />} />
-              <Route path="add" element={<AddCategory />} />
+              <Route path="add" element={<AddCategory onAddCategory={AddCategorys} />} />
             </Route>
           </Route>
           <Route path="/signup" element={<Signup />} />
