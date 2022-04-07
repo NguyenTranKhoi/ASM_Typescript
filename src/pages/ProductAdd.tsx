@@ -7,7 +7,6 @@ import 'toastr/build/toastr.min.css'
 type Inputs = { //Kiểu dữ liệu của từng input
     name: string,
     img: string,
-    nameextra: string,
     pricedrop: number,
     price: number,
 };
@@ -63,11 +62,6 @@ const ProductAdd = (props: ProductAddProps) => {
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Image</label>
                         <input type="file" className="form-control" {...register('img', { required: true })} placeholder="Tên sản phẩm" />
-                    </div>
-                    <br />
-                    <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Nameextra</label>
-                        <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />
                     </div>
                     <br />
                     <div className="form-group">

@@ -13,7 +13,6 @@ type ProductEditProps = {
 type formInputs = {
     img: string,
     name: string,
-    nameextra: string,
     pricedrop: number,
     price: number
 }
@@ -72,12 +71,6 @@ const ProductEdit = (props: ProductEditProps) => {
                     <div className="form-group">
                         <label htmlFor="exampleInputEmail1">Image</label>
                         <input type="file" className="form-control" {...register('img', { required: true })} placeholder="Tên sản phẩm" />
-                        {errors.name && <span>Bắt buộc phải nhập!</span>}
-                    </div>
-                    <br />
-                    <div className="form-group">
-                        <label htmlFor="exampleInputEmail1">Nameextra</label>
-                        <input type="text" className="form-control" {...register('nameextra', { required: true })} placeholder="Tên sản phẩm" />
                         {errors.name && <span>Bắt buộc phải nhập!</span>}
                     </div>
                     <br />

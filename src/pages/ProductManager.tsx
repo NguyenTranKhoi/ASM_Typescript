@@ -26,7 +26,7 @@ const ProductManager = (props: ProductManagerProps) => {
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Image</th>
-                        <th scope="col">Name Extra</th>
+                        <th scope="col"></th>
                         <th scope="col">Name</th>
                         <th scope="col">Price Drop</th>
                         <th scope="col">Price</th>
@@ -37,7 +37,7 @@ const ProductManager = (props: ProductManagerProps) => {
                         return <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             <td><img width={70} src={`${item.img}`} alt="" /></td>
-                            <td>{item.nameextra}</td>
+                            <td></td>
                             <td>{item.name}</td>
                             <td>{formatter.format(item.pricedrop)}</td>
                             <td>{formatter.format(item.price)}</td>
