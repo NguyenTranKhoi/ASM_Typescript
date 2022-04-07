@@ -20,23 +20,25 @@ const HeaderHome = (props: Props) => {
                                 className="no-underline text-slate-50 hover:text-orange-500">GIỚI THIỆU</a></li>
                             <li className="inline-block p-[10px] pt-[15px]"><a href="/product/page"
                                 className="no-underline text-slate-50 hover:text-orange-500">SẢN PHẨM</a></li>
+                            <li className="inline-block p-[10px] pt-[15px]"><a href=""
+                                className="no-underline text-slate-50 hover:text-orange-500">PHỤ KIỆN</a></li>
                             <li className="inline-block p-[10px] pt-[15px]"><a href="/contact/page"
                                 className="no-underline text-slate-50 hover:text-orange-500">LIÊN HỆ</a></li>
                         </ul>
                     </nav>
-                    <div className="logo pt-[10px] mr-[125px]">
+                    <div className="logo pt-[10px] mr-[215px]">
                         <a href="/"><img src="../img/logo-mona-watches-white.png" width="130" /></a>
                     </div>
                     <div className="icon pt-[5px] mr-[35px]">
-                        <div className="box h-[35px] absolute top-[26%] right-[13%] translate-[-50%,-50%] bg-white rounded-[50px] p-[6px]">
+                        <div className="box h-[30px] absolute top-[26%] right-[14%] translate-[-50%,-50%] bg-white rounded-[50px] p-[3px]">
                             <form className="sbox" action="/search" method="get">
-                                <input className="stext border-none outline-none" type="text" name="q" placeholder="Tìm kiếm bài viết..." />
+                                <input className="stext border-none outline-none ml-[5px]" type="text" name="q" placeholder="Tìm kiếm bài viết..." />
                                 <a className="sbutton text-black float-right w-[40px] h-[40px] rounded-[50%] " type="submit" href="javascript:void(0);">
                                     <i className="fa fa-search" />
                                 </a>
                             </form>
                         </div>
-                        <div className="flex">
+                        <div className="flex gap-[13px]">
                             {localStorage.getItem("user") ?
                                 <Link to={'/Signin'}>
                                     <div className="user flex items-center">
@@ -48,7 +50,7 @@ const HeaderHome = (props: Props) => {
                                 </Link> :
                                 <Link to={'/Signin'}>
                                     <div className="pt-[10px]">
-                                        <a href="" className="no-underline text-slate-50 hover:text-orange-500 p-[10px]">
+                                        <a href="" className="no-underline text-slate-900 hover:text-slate-50 hover:bg-orange-500 p-[10px] bg-slate-50 rounded-[30px]">
                                             Signin
                                         </a>
                                     </div>

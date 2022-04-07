@@ -21,14 +21,14 @@ const ProductAdd = (props: ProductAddProps) => {
     //Dùng hook useNavigare để chuyển trang
     const navigate = useNavigate()
     const onSubmit: SubmitHandler<Inputs> = (dataInput) => {
-        try {
-            props.onAdd(dataInput);
-            //Chuyển trang
-            navigate("/admin/product");
-            toastr.success("Thêm thành công")
-        } catch (error) {
-            toastr.error("Lỗi khi thêm")
-        }
+        // try {
+        //     props.onAdd(dataInput);
+        //     //Chuyển trang
+        //     navigate("/admin/product");
+        //     toastr.success("Thêm thành công")
+        // } catch (error) {
+        //     toastr.error("Lỗi khi thêm")
+        // }
         console.log(dataInput.img[0])
         const file = dataInput.img[0]
         const formData = new FormData()
@@ -44,10 +44,12 @@ const ProductAdd = (props: ProductAddProps) => {
             }, data: formData,
         }).then((res) => {
             dataInput.img = res.data.url
-            console.log(dataInput.img)
+            // console.log(dataInput.img)
             props.onAdd(dataInput)
+            navigate("/admin/product");
+            toastr.success("Thêm thành công")
         })
-        console.log(dataInput)
+        // console.log(dataInput)
     }
     return (
         <div>

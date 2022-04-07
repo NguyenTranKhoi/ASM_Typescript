@@ -28,6 +28,7 @@ const HomePage = (props: Props) => {
         <div>
             <BannerHome />
             <main>
+                <h2 className="text-2xl text-center pt-[50px]">ĐỒNG HỒ NAM</h2>
                 <div className="content-top grid grid-cols-4 pt-[50px] gap-[20px] mx-[40px]">
                     {products.map((item, index) => {
                         return <div className="w-full content-top-product border-dashed border-2 border-slate-300 text-center m-auto h-[370px] pt-[10px] rounded-[10px]" key={index}>
