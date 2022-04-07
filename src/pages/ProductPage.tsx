@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
+import { list } from '../api/product'
+import { ProductType } from '../types/product'
 
-type Props = {}
+type Props = {
+    products: ProductType[]
+}
 
 const ProductPage = (props: Props) => {
-    console.log(1234)
+    const [products, setproducts] = useState<ProductType[]>([])
+    const formatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+    });
+
+    useEffect(() => {
+        const getPD = async () => {
+            const { data } = await list();
+            setproducts(data)
+        }
+        getPD()
+    }, [])
     return (
         <div className="bg-white">
             <div>
@@ -310,26 +327,28 @@ const ProductPage = (props: Props) => {
                                         </button>
                                     </h3>
                                     {/* Filter section, show/hide based on section state. */}
-                                    <div className="pt-6" id="filter-section-1">
-                                        <div className="space-y-4">
-                                            <div className="flex items-center">
-                                                <input id="filter-category-0" name="category[]" defaultValue="new-arrivals" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-0" className="ml-3 text-sm text-gray-600"> Đồng hồ nam </label>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <input id="filter-category-1" name="category[]" defaultValue="sale" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-1" className="ml-3 text-sm text-gray-600"> Đồng hồ nữ </label>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <input id="filter-category-2" name="category[]" defaultValue="travel" type="checkbox" defaultChecked className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-2" className="ml-3 text-sm text-gray-600"> Đồng hồ đôi </label>
-                                            </div>
-                                            <div className="flex items-center">
-                                                <input id="filter-category-3" name="category[]" defaultValue="organization" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                <label htmlFor="filter-category-3" className="ml-3 text-sm text-gray-600"> Phụ kiện đồng hồ </label>
+                                    <form action="">
+                                        <div className="pt-6" id="filter-section-1">
+                                            <div className="space-y-4">
+                                                <div className="flex items-center">
+                                                    <input id="filter-category-0" name="category[]" defaultValue="new-arrivals" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
+                                                    <label htmlFor="filter-category-0" className="ml-3 text-sm text-gray-600"> Đồng hồ nam </label>
+                                                </div>
+                                                <div className="flex items-center">
+                                                    <input id="filter-category-1" name="category[]" defaultValue="sale" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
+                                                    <label htmlFor="filter-category-1" className="ml-3 text-sm text-gray-600"> Đồng hồ nữ </label>
+                                                </div>
+                                                <div className="flex items-center">
+                                                    <input id="filter-category-2" name="category[]" defaultValue="travel" type="checkbox" defaultChecked className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
+                                                    <label htmlFor="filter-category-2" className="ml-3 text-sm text-gray-600"> Đồng hồ đôi </label>
+                                                </div>
+                                                <div className="flex items-center">
+                                                    <input id="filter-category-3" name="category[]" defaultValue="organization" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
+                                                    <label htmlFor="filter-category-3" className="ml-3 text-sm text-gray-600"> Phụ kiện đồng hồ </label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 <div className="border-b border-gray-200 py-6">
                                     <h3 className="-my-3 flow-root">
@@ -378,10 +397,28 @@ const ProductPage = (props: Props) => {
                                 </div>
                             </form>
                             {/* Product grid */}
-                            <div className="lg:col-span-3">
-                                {/* Replace with your content */}
-                                <div className="border-4 border-dashed border-gray-200 rounded-lg h-96 lg:h-full" />
-                                {/* /End replace */}
+                            <div className="lg:col-span-3 border-4 border-dashed border-gray-200 rounded-lg h-96 lg:h-[1260px]">
+                                <div className="content-top grid grid-cols-3 pt-[50px] gap-[20px] mx-[40px]">
+                                    {products.map((item, index) => {
+                                        return <div className="w-full content-top-product border-dashed border-2 border-slate-300 text-center m-auto h-[370px] pt-[10px] rounded-[10px]" key={index}>
+                                            <div className="hihi overflow-hidden">
+                                                <Link to={`/products/${item._id}`}>
+                                                    <a href="#">
+                                                        <img src={`${item.img}`} width="200" className="hover:scale-110 duration-700 m-auto" />
+                                                    </a>
+                                                </Link>
+                                            </div>
+                                            <p className="pt-[10px] text-sm text-slate-500" >{item.nameextra}</p>
+                                            <Link to={`/products/${item._id}`}>
+                                                <h4 className="text-lg font-semibold pt-[5px]"><a href="" className="no-underline text-stone-900 hover:text-amber-700">{item.name}</a></h4>
+                                            </Link>
+                                            <div className="text pt-[10px]">
+                                                <del className="pr-[15px]">{formatter.format(item.pricedrop)}</del>
+                                                <strong>{formatter.format(item.price)}</strong>
+                                            </div>
+                                        </div>
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </section>

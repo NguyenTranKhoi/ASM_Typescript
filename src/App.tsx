@@ -19,9 +19,14 @@ import 'toastr/build/toastr.min.css'
 import IntroducPage from './pages/IntroducPage'
 import ContactPage from './pages/ContactPage'
 import PrivateRouter from './components/PrivateRouter'
+import AddCategory from './pages/AddCategory'
+import CategoryManager from './pages/CategoryManager'
+import { TypeCategory } from './types/category'
+import { addct, listct, updatect, removect } from './api/category'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
+  const [categorys, setCategory] = useState<TypeCategory[]>([])
 
   useEffect(() => {
     const getProducts = async () => {
@@ -30,6 +35,14 @@ function App() {
     }
     getProducts();
   }, []);
+
+  useEffect(() => {
+    const getCategory = async () => {
+      const { data } = await listct();
+      setCategory(data);
+    }
+    getCategory()
+  }, [])
 
   //Add product
   const onHandleAdd = async (product: any) => {
@@ -60,6 +73,27 @@ function App() {
     }
   }
 
+  //Add categorys
+  const AddCategorys = async (category: any) => {
+    const { data } = await addct(category)
+    setCategory([...categorys, data])
+  }
+
+  //Edit category
+  const UpdateCategory = async (editcategory: TypeCategory) => {
+    const { data } = await updatect(editcategory)
+    setCategory(categorys.map(item => item._id == data._id ? data : item))
+  }
+
+  //Remove category
+  const RemoveCategory = async (_id: number) => {
+    const confirm = window.confirm("Bạn có muốn xoá danh mục không?")
+    if (confirm) {
+      removect(_id)
+      setCategory(categorys.filter(item => item._id != _id))
+    }
+  }
+
   return (
     <div className="App">
       <main>
@@ -79,6 +113,10 @@ function App() {
               <Route index element={<ProductManager products={products} onRemove={onHandleRemove} />} />
               <Route path=":id/edit" element={<ProductEdit onUpdate={onHandleUpdate} />} />
               <Route path="add" element={<ProductAdd onAdd={onHandleAdd} />} />
+            </Route>
+            <Route path="category">
+              <Route index element={<CategoryManager categorys={categorys} onRemoveCt={RemoveCategory} />} />
+              <Route path="add" element={<AddCategory />} />
             </Route>
           </Route>
           <Route path="/signup" element={<Signup />} />
