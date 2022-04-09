@@ -24,6 +24,7 @@ import CategoryManager from './pages/CategoryManager'
 import { TypeCategory } from './types/category'
 import { addct, listct, updatect, removect } from './api/category'
 import EditCategory from './pages/EditCategory'
+import PageCart from './pages/PageCart'
 
 function App() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -108,6 +109,7 @@ function App() {
             <Route path="/introduct/page" element={<IntroducPage />} />
             <Route path="/contact/page" element={<ContactPage />} />
             <Route path="/product/page" element={<ProductPage />} />
+            <Route path="/cart/page" element={<PageCart />} />
           </Route>
 
           <Route path="admin" element={<PrivateRouter><AdminLayout /></ PrivateRouter>}>
@@ -124,6 +126,7 @@ function App() {
               <Route path=":id/edit" element={<EditCategory onUpdateCategory={UpdateCategory} />} />
             </Route>
           </Route>
+
           <Route path="/signup" element={<Signup />} />
           <Route path="/signin" element={<Signin />} />
         </Routes>

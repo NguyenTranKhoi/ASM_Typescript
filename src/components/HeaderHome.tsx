@@ -56,7 +56,9 @@ const HeaderHome = (props: Props) => {
                                     </div>
                                 </Link>
                             }
-                            <i className="fas fa-cart-plus text-slate-50 hover:text-orange-500 p-[10px] pt-[12px]"></i>
+                            <Link to={'/cart/page'}>
+                                <i className="fas fa-cart-plus text-slate-50 hover:text-orange-500 p-[10px] pt-[12px]"></i>
+                            </Link>
                         </div>
 
                     </div>
