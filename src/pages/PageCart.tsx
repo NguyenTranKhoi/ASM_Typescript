@@ -6,7 +6,12 @@ import { TypeCart } from '../types/cart'
 type Props = {}
 
 const PageCart = (props: Props) => {
+    const formatter = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+    });
     const [cart, setCart] = useState<TypeCart[]>([])
+    const [count, setcount] = useState(1)
     const id = JSON.parse(localStorage.getItem("user") as string).user._id
     useEffect(() => {
         const getcart = async () => {
@@ -25,6 +30,7 @@ const PageCart = (props: Props) => {
                             <div className="md:grid md:grid-cols-3 gap-2 ">
                                 <div className="col-span-2 p-5">
                                     <h1 className="text-2xl font-medium ">Giỏ hàng nè</h1>
+
                                     {cart.map((item) => {
                                         return <div className="flex justify-between items-center mt-6 pt-6">
                                             <div className="flex items-center"> <img src={`${item.img}`} width={60} className="rounded-full " />
@@ -34,12 +40,12 @@ const PageCart = (props: Props) => {
                                             </div>
                                             <div className="flex justify-center items-center">
                                                 <div className="pr-8 flex ">
-                                                    <span className="font-semibold">-</span>
-                                                    <input type="text" className="focus:outline-none bg-gray-100 border h-6 w-8 rounded text-sm px-2 mx-2" defaultValue={1} />
-                                                    <span className="font-semibold">+</span>
+                                                    <span onClick={() => setcount(count - 1)} className='p-[3px] bg-slate-700'><i className="fas fa-minus text-white"></i></span>
+                                                    <input className='border-1 border-slate-700 w-[40px] h-[30px] text-center' min="1" value={`${count}`} />
+                                                    <span onClick={() => setcount(count + 1)} className='p-[3px] bg-slate-700'><i className="fas fa-plus text-white"></i></span>
                                                 </div>
                                                 <div className="pr-8 ">
-                                                    <span className="text-xs font-medium">$10.50</span>
+                                                    <span className="text-base font-medium">{formatter.format(item.price)}</span>
                                                 </div>
                                                 <div>
                                                     <i className="fa fa-close text-xs font-medium" />
@@ -47,8 +53,6 @@ const PageCart = (props: Props) => {
                                             </div>
                                         </div>
                                     })}
-
-
 
                                     <div className="flex justify-between items-center mt-6 pt-6 border-t">
                                         <Link to={'/product/page'}>
@@ -65,10 +69,17 @@ const PageCart = (props: Props) => {
                                 </div>
                                 <div className=" p-5 bg-gray-800 rounded overflow-visible">
                                     <span className="text-2xl font-medium text-gray-100 block pb-3">Thanh toán nè</span>
-
                                     <div className="flex justify-center flex-col pt-3">
                                         <label className="text-sm text-gray-400 ">Họ tên khách hàng *</label>
-                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Nhập họ tên đầy đủ" />
+                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Nhập họ tên người mua" />
+                                    </div>
+                                    <div className="flex justify-center flex-col pt-3">
+                                        <label className="text-sm text-gray-400 ">Địa chỉ *</label>
+                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Nhập địa chỉ người mua" />
+                                    </div>
+                                    <div className="flex justify-center flex-col pt-3">
+                                        <label className="text-sm text-gray-400 ">Số điện thoại *</label>
+                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Nhập SĐT người mua" />
                                     </div>
                                     <div className="flex justify-center flex-col pt-3">
                                         <label className="text-sm text-gray-400 ">Email *</label>
@@ -76,14 +87,14 @@ const PageCart = (props: Props) => {
                                     </div>
                                     <div className="grid grid-cols-3 gap-2 pt-2 mb-3">
                                         <div className="col-span-2 ">
-                                            <label className="text-xs text-gray-400">Expiration Date</label>
+                                            <label className="text-sm text-gray-400">Ngày đặt sản phẩm</label>
                                             <div className="grid grid-cols-2 gap-2">
-                                                <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="mm" />
-                                                <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="yyyy" />
+                                                <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Ngày" />
+                                                <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Tháng" />
                                             </div>
                                         </div>
                                         <div>
-                                            <label className="text-xs text-gray-400">CVV</label>
+                                            <label className="text-xs text-gray-400">Năm</label>
                                             <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="XXX" />
                                         </div>
                                     </div>

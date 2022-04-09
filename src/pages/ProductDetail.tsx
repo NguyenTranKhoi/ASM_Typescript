@@ -159,19 +159,15 @@ const ProductDetail = (props: Props) => {
                                     </fieldset>
                                 </div>
                                 {/* Sizes */}
-                                <br />
-                                <div className="float-left">
+                                <div className="float-left pt-[30px]">
                                     <h3 className="text-lg text-gray-900 font-medium float-left">Số lượng</h3>
                                     <br />
                                     <br />
-                                    <span onClick={() => setcount(count - 1)} className='bg-orange-500 p-1'>-</span>
-                                    <input className='border-2 border-slate-400 w-10 text-center mx-1' min="1" value={`${count}`} {...register('quantiny')} />
-                                    <span onClick={() => setcount(count + 1)} className='bg-orange-500 p-1'>+</span>
+                                    <span onClick={() => setcount(count - 1)} className='p-[7px] bg-slate-700'><i className="fas fa-minus text-white"></i></span>
+                                    <input className='border-1 border-slate-700 w-[50px] h-[33px] text-center' min="1" value={`${count}`} {...register('quantiny')} />
+                                    <span onClick={() => setcount(count + 1)} className='p-[7px] bg-slate-700'><i className="fas fa-plus text-white"></i></span>
                                 </div>
-                                <br />
-                                <br />
-                                <br />
-                                <div className="mt-10">
+                                <div className="mt-10 pt-[100px]">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-lg text-gray-900 font-medium">Size</h3>
                                         <a href="#" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">Size guide</a>
