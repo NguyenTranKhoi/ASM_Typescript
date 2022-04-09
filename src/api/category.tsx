@@ -18,6 +18,6 @@ export const readct = (slug: string | undefined) => {
     return instance.get(url)
 }
 export const updatect = (category: TypeCategory) => {
-    const url = `/category/${category._id}/edit`
+    const url = `/category/${category._id}`
     return instance.put(url, category)
 }
