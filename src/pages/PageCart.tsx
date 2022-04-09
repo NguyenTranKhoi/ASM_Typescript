@@ -53,8 +53,8 @@ const PageCart = (props: Props) => {
                                     <div className="flex justify-between items-center mt-6 pt-6 border-t">
                                         <Link to={'/product/page'}>
                                             <div className="flex items-center">
-                                                <i className="fa fa-arrow-left text-sm pr-2" />
-                                                <span className="text-md font-medium text-blue-500">Tiếp tục mua hàng</span>
+                                                <i className="fa fa-arrow-left text-sm pr-2 text-gray-600 hover:text-gray-500" />
+                                                <span className="text-md font-medium text-gray-600 hover:text-gray-500">Tiếp tục mua hàng</span>
                                             </div>
                                         </Link>
                                         <div className="flex justify-center items-end">
