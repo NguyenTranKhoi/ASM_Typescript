@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { read } from '../api/cart'
 import { TypeCart } from '../types/cart'
 
@@ -23,7 +24,7 @@ const PageCart = (props: Props) => {
                         <div className="w-[100%] p-4 px-5 py-5">
                             <div className="md:grid md:grid-cols-3 gap-2 ">
                                 <div className="col-span-2 p-5">
-                                    <h1 className="text-2xl font-medium ">Shopping Cart</h1>
+                                    <h1 className="text-2xl font-medium ">Giỏ hàng nè</h1>
                                     {cart.map((item) => {
                                         return <div className="flex justify-between items-center mt-6 pt-6">
                                             <div className="flex items-center"> <img src={`${item.img}`} width={60} className="rounded-full " />
@@ -50,26 +51,28 @@ const PageCart = (props: Props) => {
 
 
                                     <div className="flex justify-between items-center mt-6 pt-6 border-t">
-                                        <div className="flex items-center">
-                                            <i className="fa fa-arrow-left text-sm pr-2" />
-                                            <span className="text-md font-medium text-blue-500">Continue Shopping</span>
-                                        </div>
+                                        <Link to={'/product/page'}>
+                                            <div className="flex items-center">
+                                                <i className="fa fa-arrow-left text-sm pr-2" />
+                                                <span className="text-md font-medium text-blue-500">Tiếp tục mua hàng</span>
+                                            </div>
+                                        </Link>
                                         <div className="flex justify-center items-end">
-                                            <span className="text-sm font-medium text-gray-400 mr-1">Subtotal:</span>
+                                            <span className="text-sm font-medium text-gray-600 mr-1">Tổng thiệt hại:</span>
                                             <span className="text-lg font-bold text-gray-800 "> $24.90</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className=" p-5 bg-gray-800 rounded overflow-visible">
-                                    <span className="text-2xl font-medium text-gray-100 block pb-3">Card Details</span>
+                                    <span className="text-2xl font-medium text-gray-100 block pb-3">Thanh toán nè</span>
 
                                     <div className="flex justify-center flex-col pt-3">
-                                        <label className="text-xs text-gray-400 ">Name on Card</label>
-                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Giga Tamarashvili" />
+                                        <label className="text-sm text-gray-400 ">Họ tên khách hàng *</label>
+                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Nhập họ tên đầy đủ" />
                                     </div>
                                     <div className="flex justify-center flex-col pt-3">
-                                        <label className="text-xs text-gray-400 ">Card Number</label>
-                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="**** **** **** ****" />
+                                        <label className="text-sm text-gray-400 ">Email *</label>
+                                        <input type="text" className="focus:outline-none w-full h-6 bg-gray-800 text-white placeholder-gray-300 text-sm border-b border-gray-600 py-4" placeholder="Email" />
                                     </div>
                                     <div className="grid grid-cols-3 gap-2 pt-2 mb-3">
                                         <div className="col-span-2 ">
