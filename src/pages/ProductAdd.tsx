@@ -1,21 +1,27 @@
 import axios from "axios";
+import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
+import { listct } from "../api/category";
+import { TypeCategory } from "../types/category";
 
 type Inputs = { //Kiểu dữ liệu của từng input
     name: string,
     img: string,
     pricedrop: number,
     price: number,
+    category: string
 };
 
 type ProductAddProps = {
     onAdd: (product: Inputs) => void
+    categorys: TypeCategory[]
 }
 
 const ProductAdd = (props: ProductAddProps) => {
+    // console.log(props)
     const { register, handleSubmit, formState: { errors } } = useForm<Inputs>()
     //Dùng hook useNavigare để chuyển trang
     const navigate = useNavigate()
@@ -50,6 +56,7 @@ const ProductAdd = (props: ProductAddProps) => {
         })
         // console.log(dataInput)
     }
+
     return (
         <div>
             <header className="bg-white shadow">
@@ -77,6 +84,15 @@ const ProductAdd = (props: ProductAddProps) => {
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Price Product</label>
                         <input type="text" className="form-control" {...register('price', { required: true })} placeholder="Giá sản phẩm" />
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Name category</label>
+                        <select id="" {...register('category', { required: true })}>
+                            {props.categorys.map((item) => {
+                                return <option value={item._id}>{item.name}</option>
+                            })}
+                        </select>
                     </div>
                     <br />
                     <button type="submit" className="btn btn-primary w-[100%] bg-indigo-500">Submit</button>

@@ -408,7 +408,7 @@ const ProductPage = (props: Props) => {
                                                     </a>
                                                 </Link>
                                             </div>
-                                            <p className="pt-[10px] text-sm text-slate-500" >{item.nameextra}</p>
+                                            <p className="pt-[10px] text-sm text-slate-500" >{item.category.name}</p>
                                             <Link to={`/products/${item._id}`}>
                                                 <h4 className="text-lg font-semibold pt-[5px]"><a href="" className="no-underline text-stone-900 hover:text-amber-700">{item.name}</a></h4>
                                             </Link>

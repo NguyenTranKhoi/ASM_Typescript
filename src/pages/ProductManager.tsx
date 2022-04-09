@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import { TypeCategory } from '../types/category';
 import { ProductType } from '../types/product'
 
 type ProductManagerProps = {
@@ -26,7 +27,7 @@ const ProductManager = (props: ProductManagerProps) => {
                     <tr>
                         <th scope="col">ID</th>
                         <th scope="col">Image</th>
-                        <th scope="col"></th>
+                        <th scope="col">Name Category</th>
                         <th scope="col">Name</th>
                         <th scope="col">Price Drop</th>
                         <th scope="col">Price</th>
@@ -34,10 +35,11 @@ const ProductManager = (props: ProductManagerProps) => {
                 </thead>
                 <tbody>
                     {props.products.map((item, index) => {
+                        // console.log("abc", item)
                         return <tr key={index}>
                             <th scope="row">{index + 1}</th>
                             <td><img width={70} src={`${item.img}`} alt="" /></td>
-                            <td></td>
+                            <td>{item.category.name}</td>
                             <td>{item.name}</td>
                             <td>{formatter.format(item.pricedrop)}</td>
                             <td>{formatter.format(item.price)}</td>

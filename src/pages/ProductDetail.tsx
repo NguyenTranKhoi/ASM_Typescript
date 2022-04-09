@@ -20,6 +20,7 @@ const ProductDetail = (props: Props) => {
     const { id } = useParams();
     const navigate = useNavigate()
     const [product, setProduct] = useState<ProductType>();
+
     const formatter = new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: "USD",
@@ -28,6 +29,7 @@ const ProductDetail = (props: Props) => {
     useEffect(() => {
         const getProduct = async () => {
             const { data } = await read(id);
+            console.log(product)
             setProduct(data);
         };
         getProduct();
@@ -78,22 +80,22 @@ const ProductDetail = (props: Props) => {
                             <h1 className="text-2xl font-extrabold tracking-tight text-gray-900 sm:text-3xl float-left">{product?.name}</h1>
                             <br />
                             <br />
-                            <p className="pt-[10px] text-lg text-slate-500 float-left">{product?.nameextra}</p>
+                            <p className="pt-[10px] text-lg text-slate-500 float-left">{product?.category.name}</p>
                             <br />
                             <div className="mt-6 max-w-2xl mx-auto sm:px-6 lg:max-w-7xl lg:px-8 lg:grid lg:grid-cols-3 lg:gap-x-8 mt-[50px]">
                                 <div className="hidden aspect-w-3 aspect-h-4 rounded-lg overflow-hidden lg:block">
-                                    <img src={`${product?.img}`} alt="Two each of gray, white, and black shirts laying flat." className="w-full h-full object-center object-cover" />
+                                    <img src={product?.img} alt="Two each of gray, white, and black shirts laying flat." className="w-full h-full object-center object-cover" />
                                 </div>
                                 <div className="hidden lg:grid lg:grid-cols-1 lg:gap-y-8">
                                     <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                                        <img src={`${product?.img}`} alt="Model wearing plain black basic tee." className="w-full h-full object-center object-cover" />
+                                        <img src={product?.img} alt="Model wearing plain black basic tee." className="w-full h-full object-center object-cover" />
                                     </div>
                                     <div className="aspect-w-3 aspect-h-2 rounded-lg overflow-hidden">
-                                        <img src={`${product?.img}`} alt="Model wearing plain gray basic tee." className="w-full h-full object-center object-cover" />
+                                        <img src={product?.img} alt="Model wearing plain gray basic tee." className="w-full h-full object-center object-cover" />
                                     </div>
                                 </div>
                                 <div className="aspect-w-4 aspect-h-5 sm:rounded-lg sm:overflow-hidden lg:aspect-w-3 lg:aspect-h-4">
-                                    <img src={`${product?.img}`} alt="Model wearing plain white basic tee." className="w-full h-full object-center object-cover" />
+                                    <img src={product?.img} alt="Model wearing plain white basic tee." className="w-full h-full object-center object-cover" />
                                 </div>
                             </div>
                         </div>
