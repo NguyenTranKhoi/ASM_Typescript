@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { read, removecart } from '../api/cart'
+import { getOne, read, removecart, update } from '../api/cart'
 import { TypeCart } from '../types/cart'
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
@@ -34,6 +34,35 @@ const PageCart = (props: Props) => {
         }
     }
 
+    const handleDecrease = async (id: string) => {
+        // get info cart
+        const { data: cartInfo } = await getOne(id);
+        if (cartInfo.quantiny <= 1) {
+            toastr.info("Chọn ít nhất 1 sp");
+        } else {
+            const { data: cartUpdate } = await update({
+                ...cartInfo,
+                quantiny: --cartInfo.quantiny
+            });
+            toastr.success("Cập nhật số lượng thành công");
+
+            setCart(cart.map(item => item._id === cartUpdate._id ? cartUpdate : item));
+        }
+
+    }
+
+    const handleIncrease = async (id: string) => {
+        // get info cart
+        const { data: cartInfo } = await getOne(id);
+        const { data: cartUpdate } = await update({
+            ...cartInfo,
+            quantiny: ++cartInfo.quantiny
+        });
+        toastr.success("Cập nhật số lượng thành công");
+
+        setCart(cart.map(item => item._id === cartUpdate._id ? cartUpdate : item));
+    }
+
     return (
         <div className="h-screen bg-gray-200 pt-[80px] h-[100%]">
             <div className="py-12">
@@ -53,9 +82,9 @@ const PageCart = (props: Props) => {
                                             </div>
                                             <div className="flex justify-center items-center">
                                                 <div className="pr-8 flex ">
-                                                    <span onClick={() => setcount(count - 1)} className='p-[3px] bg-slate-700'><i className="fas fa-minus text-white"></i></span>
-                                                    <input className='border-1 border-slate-700 w-[40px] h-[30px] text-center' min="1" value={`${count}`} />
-                                                    <span onClick={() => setcount(count + 1)} className='p-[3px] bg-slate-700'><i className="fas fa-plus text-white"></i></span>
+                                                    <span onClick={() => handleDecrease(item._id)} className='p-[3px] bg-slate-700'><i className="fas fa-minus text-white"></i></span>
+                                                    <input className='border-1 border-slate-700 w-[40px] h-[30px] text-center' min="1" value={item.quantiny} />
+                                                    <span onClick={() => handleIncrease(item._id)} className='p-[3px] bg-slate-700'><i className="fas fa-plus text-white"></i></span>
                                                 </div>
                                                 <div className="pr-8 ">
                                                     <span className="text-base font-medium">{formatter.format(item.price)}</span>

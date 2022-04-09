@@ -17,3 +17,11 @@ export const removecart = (id: number) => {
     const url = `/cart/${id}`
     return instance.delete(url)
 }
+export const getOne = (cartId: string) => {
+    const url = `/cart/getItem/${cartId}`;
+    return instance.get(url);
+}
+export const update = (productCart: TypeCart) => {
+    const url = `/cart/${productCart._id}`;
+    return instance.put(url, productCart);
+}
