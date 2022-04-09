@@ -1,12 +1,24 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { read } from '../api/product';
 import { ProductType } from '../types/product';
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { addcart } from '../api/cart';
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 type Props = {}
 
+type FormInput = {
+    quantiny: number,
+    color: string,
+    size: string
+}
 const ProductDetail = (props: Props) => {
+    const { register, handleSubmit, formState: { errors } } = useForm<FormInput>()
+    const [count, setcount] = useState(1)
     const { id } = useParams();
+    const navigate = useNavigate()
     const [product, setProduct] = useState<ProductType>();
     const formatter = new Intl.NumberFormat("en-US", {
         style: "currency",
@@ -20,6 +32,21 @@ const ProductDetail = (props: Props) => {
         };
         getProduct();
     }, [])
+
+    const onSubmit: SubmitHandler<FormInput> = data => {
+        const newdata = {
+            ...data,
+            name: product?.name,
+            price: product?.price,
+            img: product?.img,
+            user: JSON.parse(localStorage.getItem("user") as string).user._id
+        }
+        console.log(newdata)
+        addcart(newdata)
+        navigate("/cart/page")
+        toastr.success("Thêm sản phẩm thành công")
+    }
+
     return (
         <div>
             <div className="bg-white">
@@ -102,7 +129,7 @@ const ProductDetail = (props: Props) => {
                                     <a href="#" className="ml-3 text-sm font-medium text-indigo-600 hover:text-indigo-500">117 reviews</a>
                                 </div>
                             </div>
-                            <form className="mt-10">
+                            <form className="mt-10" onSubmit={handleSubmit(onSubmit)}>
                                 {/* Colors */}
                                 <div>
                                     <h3 className="text-lg text-gray-900 font-medium float-left">Color</h3>
@@ -132,6 +159,18 @@ const ProductDetail = (props: Props) => {
                                     </fieldset>
                                 </div>
                                 {/* Sizes */}
+                                <br />
+                                <div className="float-left">
+                                    <h3 className="text-lg text-gray-900 font-medium float-left">Số lượng</h3>
+                                    <br />
+                                    <br />
+                                    <span onClick={() => setcount(count - 1)} className='bg-orange-500 p-1'>-</span>
+                                    <input className='border-2 border-slate-400 w-10 text-center mx-1' min="1" value={`${count}`} {...register('quantiny')} />
+                                    <span onClick={() => setcount(count + 1)} className='bg-orange-500 p-1'>+</span>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
                                 <div className="mt-10">
                                     <div className="flex items-center justify-between">
                                         <h3 className="text-lg text-gray-900 font-medium">Size</h3>
@@ -187,7 +226,6 @@ const ProductDetail = (props: Props) => {
                                             <label className="group relative border rounded-md py-3 px-4 flex items-center justify-center text-sm font-medium uppercase hover:bg-gray-50 focus:outline-none sm:flex-1 sm:py-6 bg-white shadow-sm text-gray-900 cursor-pointer">
                                                 <input type="radio" name="size-choice" defaultValue="3XL" className="sr-only" aria-labelledby="size-choice-7-label" />
                                                 <p id="size-choice-7-label">3XL</p>
-
                                                 <div className="absolute -inset-px rounded-md pointer-events-none" aria-hidden="true" />
                                             </label>
                                         </div>

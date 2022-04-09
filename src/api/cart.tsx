@@ -1,7 +1,7 @@
 import { TypeCart } from "../types/cart"
 import instance from "./instance"
 
-export const read = (id: string | undefined) => {
+export const read = (id: string) => {
     const url = `/cart/${id}`
     return instance.get(url)
 }

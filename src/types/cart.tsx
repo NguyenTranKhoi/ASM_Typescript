@@ -4,5 +4,7 @@ export type TypeCart = {
     img: string,
     price: number,
     user: string,
-    quantiny: number
+    quantiny: number,
+    color: string,
+    size: string
 }
