@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { read } from '../api/cart'
+import { read, removecart } from '../api/cart'
 import { TypeCart } from '../types/cart'
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 
 type Props = {}
 
@@ -13,6 +15,7 @@ const PageCart = (props: Props) => {
     const [cart, setCart] = useState<TypeCart[]>([])
     const [count, setcount] = useState(1)
     const id = JSON.parse(localStorage.getItem("user") as string).user._id
+
     useEffect(() => {
         const getcart = async () => {
             const { data } = await read(id)
@@ -20,6 +23,16 @@ const PageCart = (props: Props) => {
         }
         getcart()
     }, [])
+
+    //remove cart
+    const onRemoveCart = async (_id: number) => {
+        const confirm = window.confirm("Bạn có muốn xoá sản phẩm này ?")
+        toastr.success("Xoá sản phẩm thành công")
+        if (confirm) {
+            removecart(_id)
+            setCart(cart.filter(item => item._id !== _id))
+        }
+    }
 
     return (
         <div className="h-screen bg-gray-200 pt-[80px] h-[100%]">
@@ -48,7 +61,7 @@ const PageCart = (props: Props) => {
                                                     <span className="text-base font-medium">{formatter.format(item.price)}</span>
                                                 </div>
                                                 <div>
-                                                    <i className="fa fa-close text-xs font-medium" />
+                                                    <button onClick={() => { onRemoveCart(item._id) }}><i className="fas fa-trash"></i></button>
                                                 </div>
                                             </div>
                                         </div>
