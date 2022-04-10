@@ -6,15 +6,18 @@ import { ProductType } from '../types/product'
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
 import axios from 'axios'
+import { TypeCategory } from '../types/category'
 
 type ProductEditProps = {
     onUpdate: (product: ProductType) => void
+    categorys: TypeCategory[]
 }
 type formInputs = {
     img: string,
     name: string,
     pricedrop: number,
-    price: number
+    price: number,
+    category: string
 }
 
 const ProductEdit = (props: ProductEditProps) => {
@@ -90,6 +93,15 @@ const ProductEdit = (props: ProductEditProps) => {
                         <label htmlFor="exampleInputPassword1">Price Product</label>
                         <input type="text" className="form-control" {...register('price', { required: true })} placeholder="Giá sản phẩm" />
                         {errors.price && <span>Bắt buộc phải nhập!</span>}
+                    </div>
+                    <br />
+                    <div className="form-group">
+                        <label htmlFor="exampleInputEmail1">Name category</label>
+                        <select id="" {...register('category', { required: true })}>
+                            {props.categorys.map((item) => {
+                                return <option value={item._id}>{item.name}</option>
+                            })}
+                        </select>
                     </div>
                     <br />
                     <button type="submit" className="btn btn-primary w-[100%] bg-indigo-500">Edit</button>
