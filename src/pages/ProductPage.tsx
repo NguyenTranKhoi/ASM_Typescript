@@ -329,28 +329,16 @@ const ProductPage = (props: Props) => {
                                         </button>
                                     </h3>
                                     {/* Filter section, show/hide based on section state. */}
-                                    <form action="">
-                                        <div className="pt-6" id="filter-section-1">
-                                            <div className="space-y-4">
-                                                <div className="flex items-center">
+                                    <div className="pt-6" id="filter-section-1">
+                                        <div className="space-y-4">
+                                            {props.categorys.map((item) => {
+                                                return <div className="flex items-center">
                                                     <input id="filter-category-0" name="category[]" defaultValue="new-arrivals" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                    <label htmlFor="filter-category-0" className="ml-3 text-sm text-gray-600"> Đồng hồ nam </label>
+                                                    <label htmlFor="filter-category-0" className="ml-3 text-sm text-gray-600"> {item.name} </label>
                                                 </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-1" name="category[]" defaultValue="sale" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                    <label htmlFor="filter-category-1" className="ml-3 text-sm text-gray-600"> Đồng hồ nữ </label>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-2" name="category[]" defaultValue="travel" type="checkbox" defaultChecked className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                    <label htmlFor="filter-category-2" className="ml-3 text-sm text-gray-600"> Đồng hồ đôi </label>
-                                                </div>
-                                                <div className="flex items-center">
-                                                    <input id="filter-category-3" name="category[]" defaultValue="organization" type="checkbox" className="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500" />
-                                                    <label htmlFor="filter-category-3" className="ml-3 text-sm text-gray-600"> Phụ kiện đồng hồ </label>
-                                                </div>
-                                            </div>
+                                            })}
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                                 <div className="border-b border-gray-200 py-6">
                                     <h3 className="-my-3 flow-root">
