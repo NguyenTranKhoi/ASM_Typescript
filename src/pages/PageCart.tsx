@@ -5,7 +5,10 @@ import { TypeCart } from '../types/cart'
 import toastr from 'toastr'
 import 'toastr/build/toastr.min.css'
 
-type Props = {}
+
+type Props = {
+
+}
 
 const PageCart = (props: Props) => {
     const formatter = new Intl.NumberFormat("en-US", {
@@ -75,10 +78,12 @@ const PageCart = (props: Props) => {
 
                                     {cart.map((item) => {
                                         return <div className="flex justify-between items-center mt-6 pt-6">
-                                            <div className="flex items-center"> <img src={`${item.img}`} width={60} className="rounded-full " />
+                                            <div className="flex items-center">
+                                                <img src={`${item.img}`} width={60} className="rounded-full " />
                                                 <div className="flex flex-col ml-3">
                                                     <span className="md:text-md font-medium">{item.name}</span>
-                                                    <span className="text-xs font-light text-gray-400">#41551</span> </div>
+                                                    <span className="text-xs font-light text-gray-400">{ }</span>
+                                                </div>
                                             </div>
                                             <div className="flex justify-center items-center">
                                                 <div className="pr-8 flex ">

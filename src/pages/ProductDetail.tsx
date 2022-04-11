@@ -165,9 +165,9 @@ const ProductDetail = (props: Props) => {
                                     <h3 className="text-lg text-gray-900 font-medium float-left">Số lượng</h3>
                                     <br />
                                     <br />
-                                    <span onClick={() => setcount(count - 1)} className='p-[7px] bg-slate-700'><i className="fas fa-minus text-white"></i></span>
+                                    <span onClick={() => setcount(count - 1)} className='p-[6px] bg-slate-700'><i className="fas fa-minus text-white"></i></span>
                                     <input className='border-1 border-slate-700 w-[50px] h-[33px] text-center' min="1" value={`${count}`} {...register('quantiny')} />
-                                    <span onClick={() => setcount(count + 1)} className='p-[7px] bg-slate-700'><i className="fas fa-plus text-white"></i></span>
+                                    <span onClick={() => setcount(count + 1)} className='p-[6px] bg-slate-700'><i className="fas fa-plus text-white"></i></span>
                                 </div>
                                 <div className="mt-10 pt-[100px]">
                                     <div className="flex items-center justify-between">

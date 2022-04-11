@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { list } from '../api/product'
+import { TypeCategory } from '../types/category'
 import { ProductType } from '../types/product'
 
 type Props = {
     products: ProductType[]
+    categorys: TypeCategory[]
 }
 
 const ProductPage = (props: Props) => {
